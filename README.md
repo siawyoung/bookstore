@@ -1,5 +1,11 @@
 # Environment
 
+Start local MySQL instance running and make sure you have a database created:
+
+```
+CREATE DATABASE bookstore_dev;
+```
+
 Add `.env` to the root of the project with the following (example) settings:
 
 ```
