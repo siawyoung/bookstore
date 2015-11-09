@@ -65,6 +65,8 @@ class Rating(models.Model):
 	def clean(self):
 		if (self.rater_id == self.ratee_id):
 			raise ValidationError('rater_id == ratee_id')
+		if (len(Feedback.objects.filter(rater=self.ratee, book=self.book)) > 0)
+			raise ValidationError('feedback not found')
 	class Meta:
 		unique_together = (book, rater, ratee)
 	score_choices = (
@@ -76,5 +78,3 @@ class Rating(models.Model):
 	rater = models.ForeignKey(Customer)
 	ratee = models.ForeignKey(Customer)
 	book = models.ForeignKey(Book)
-	PRIMARY KEY(ISBN, rater_id, ratee_id)
-	CONSTRAINT Rateelogin CHECK(ratee_id IN(SELECT login_id FROM feedback))
