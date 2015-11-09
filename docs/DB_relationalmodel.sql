@@ -2,9 +2,9 @@ CREATE TABLE Customer (
 	login_id CHAR (10)
 	name VARCHAR(30)
 	password VARCHAR(16)
-	major_credit_card_num CHAR(16)
+	major_credit_card_num INTEGER
 	address VARCHAR (50)
-	phone_num CHAR(10)
+	phone_num INTEGER
 	PRIMARY KEY (login_id))
 
 CREATE TABLE Books(
@@ -36,7 +36,7 @@ CREATE TABLE feedback(
 	ISBN CHAR(14)
 	score INTEGER CHECK (score <= 10 AND score >= 0)
 	date DATE 
-	short_text VARCHAR(100)
+	short_text CHAR(100)
 	PRIMARY KEY (login_id, ISBN)
 	FOREIGN KEY (login_id) REFERENCES Customer
 	FOREIGN KEY ISBN) REFERENCES Books)
@@ -49,6 +49,6 @@ CREATE TABLE rating(
 	ISBN CHAR (14)
 	PRIMARY KEY(ISBN, rater_id, ratee_id)
 	FOREIGN KEY rater_id REFERENCES Customer
-	FOREIGN KEY ratee_id REFERENCES Customer
+	FOREIGN KEY ratee_id REFERENCES feedback
 	FOREIGN KEY (ISBN) REFERENCES Books)
-	CONSTRAINT Rateelogin CHECK(ratee_id IN(SELECT login_id FROM feedback)) //This is not to be implemented in the SQL as this is an assertion. 
+
