@@ -1,54 +1,54 @@
 CREATE TABLE Customer (
-	login_id CHAR (10)
-	name VARCHAR(30)
-	password VARCHAR(16)
-	major_credit_card_num INTEGER
-	address VARCHAR (50)
-	phone_num INTEGER
-	PRIMARY KEY (login_id))
+	Login_id CHAR (20)
+	Name VARCHAR(50)
+	Password VARCHAR(16)
+	Major_credit_card_num CHAR(16)
+	Address VARCHAR (100)
+	Phone_num CHAR(10)
+	PRIMARY KEY (Login_id));
 
 CREATE TABLE Books(
 	ISBN CHAR(14)
-	Title VARCHAR (50)
-	Authors VARCHAR (50)
-	Publisher VARCHAR (50)
+	Title VARCHAR (100)
+	Authors VARCHAR (100)
+	Publisher VARCHAR (100)
 	YOP DATE()
-	available_copies INTEGER
-	price DOUBLE(4,2)
+	Available_copies INTEGER
+	Price DOUBLE(4,2)
 	Format CHAR(15) CHECK (Format = ‘Hardcover’ OR Format = ‘Softcover’)
-	Keywords CHAR (20)
-	Subject CHAR (20)
-	PRIMARY KEY (ISBN))
+	Keywords VARCHAR (100)
+	Subject VARCHAR (50)
+	PRIMARY KEY (ISBN));
 
-CREATE TABLE orders(
+CREATE TABLE Orders(
 	Date DATE()
 	Time TIME()
 	ISBN CHAR(14) 
 	login_id CHAR (10)
-	copies_ordered INTEGER
-	status CHAR(15)
-	PRIMARY KEY (login_id, ISBN, Date, Time)
+	Copies_ordered INTEGER
+	Status VARCHAR(25) CHECK (Status='In transit to Customer' OR Status='Processing Payment' OR Status='Delivered to Customer' OR Status='In Warehouse')
+	PRIMARY KEY (Login_id, ISBN, Date, Time)
 	FOREIGN KEY (ISBN) REFERENCES Books ON DELETE CASCADE
-	FOREIGN KEY (login_id) REFERENCES Customer ON DELETE CASCADE)
+	FOREIGN KEY (Login_id) REFERENCES Customer ON DELETE CASCADE);
 
-CREATE TABLE feedback(
-	login_id CHAR(10)
+CREATE TABLE Feedback(
+	Login_id CHAR(10)
 	ISBN CHAR(14)
-	score INTEGER CHECK (score <= 10 AND score >= 0)
-	date DATE 
-	short_text CHAR(100)
-	PRIMARY KEY (login_id, ISBN)
-	FOREIGN KEY (login_id) REFERENCES Customer
-	FOREIGN KEY ISBN) REFERENCES Books)
+	Score INTEGER CHECK (score <= 10 AND score >= 0)
+	Date DATE() 
+	Short_text VARCHAR(140)
+	PRIMARY KEY (Login_id, ISBN)
+	FOREIGN KEY (Login_id) REFERENCES Customer
+	FOREIGN KEY (ISBN) REFERENCES Books);
 
 
 CREATE TABLE rating( 
 	Score INTEGER CHECK (Score <= 2 AND Score>=0) 
-	rater_id CHAR(10)
-	ratee_id CHAR(10) CHECK (rater_id <> ratee_id) 
+	Rater_id CHAR(10)
+	Ratee_id CHAR(10) CHECK (Rater_id <> Ratee_id) 
 	ISBN CHAR (14)
-	PRIMARY KEY(ISBN, rater_id, ratee_id)
-	FOREIGN KEY rater_id REFERENCES Customer
-	FOREIGN KEY ratee_id REFERENCES feedback
+	PRIMARY KEY(ISBN, Rater_id, Ratee_id)
+	FOREIGN KEY Rater_id REFERENCES Customer
+	FOREIGN KEY Ratee_id REFERENCES Customer
 	FOREIGN KEY (ISBN) REFERENCES Books)
-
+	CONSTRAINT Rateelogin CHECK(Ratee_id IN(SELECT Login_id FROM Feedback)); #This is not to be implemented in the SQL as this is an assertion. Essential for making sure you are rating someone who HAS made a feedback before
