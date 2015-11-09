@@ -49,6 +49,5 @@ CREATE TABLE rating(
 	ISBN CHAR (14)
 	PRIMARY KEY(ISBN, Rater_id, Ratee_id)
 	FOREIGN KEY Rater_id REFERENCES Customer
-	FOREIGN KEY Ratee_id REFERENCES Customer
-	FOREIGN KEY (ISBN) REFERENCES Books)
-	CONSTRAINT Rateelogin CHECK(Ratee_id IN(SELECT Login_id FROM Feedback)); #This is not to be implemented in the SQL as this is an assertion. Essential for making sure you are rating someone who HAS made a feedback before
+	FOREIGN KEY (Ratee_id, ISBN) REFERENCES Feedback(Login_id, ISBN);
+	
