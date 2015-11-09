@@ -27,8 +27,8 @@ class Book(models.Model):
 
 class Order(models.Model):
 	date_time = models.DateTimeField(blank=False, verbose_name="date time of order")
-	isbn = models.ForeignKey("Book")
-	login_id = models.ForeignKey("Customer")
+	book = models.ForeignKey("Book")
+	customer = models.ForeignKey("Customer")
 	copies = models.IntegerField(blank=False, verbose_name="copies ordered")
 	order_status_choices = (
 		('it', 'in transit to customer'),
@@ -41,8 +41,8 @@ class Order(models.Model):
 		unique_together = ('login_id', 'isbn', 'date_time')
 
 class Feedback(models.Model):
-	login_id = models.ForeignKey("Customer")
-	isbn = models.ForeignKey("Book")
+	rater = models.ForeignKey("Customer")
+	book = models.ForeignKey("Book")
 	score_choices = (
 		(1,1),
 		(2,2),
@@ -62,17 +62,19 @@ class Feedback(models.Model):
 		unique_together = ("login_id", "isbn")
 
 class Rating(models.Model):
+	def clean(self):
+		if (self.rater_id == self.ratee_id):
+			raise ValidationError('rater_id == ratee_id')
+	class Meta:
+		unique_together = (book, rater, ratee)
 	score_choices = (
 		(0,0),
 		(1,1),
 		(2,2)
 	)
 	score = models.IntegerField(choices=score_choices)
-	rater_id CHAR(10)
-	ratee_id CHAR(10) CHECK (rater_id <> ratee_id) 
-	ISBN CHAR (14)
+	rater = models.ForeignKey(Customer)
+	ratee = models.ForeignKey(Customer)
+	book = models.ForeignKey(Book)
 	PRIMARY KEY(ISBN, rater_id, ratee_id)
-	FOREIGN KEY rater_id REFERENCES Customer
-	FOREIGN KEY ratee_id REFERENCES feedback
-	FOREIGN KEY (ISBN) REFERENCES Books)
 	CONSTRAINT Rateelogin CHECK(ratee_id IN(SELECT login_id FROM feedback))
