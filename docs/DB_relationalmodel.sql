@@ -21,15 +21,20 @@ CREATE TABLE Books(
 	PRIMARY KEY (ISBN));
 
 CREATE TABLE Orders(
+	Order_id INTEGER
 	Date DATE()
 	Time TIME()
-	ISBN CHAR(14) 
 	login_id CHAR (10)
-	Copies_ordered INTEGER
 	Status VARCHAR(25) CHECK (Status='In transit to Customer' OR Status='Processing Payment' OR Status='Delivered to Customer' OR Status='In Warehouse')
-	PRIMARY KEY (Login_id, ISBN, Date, Time)
-	FOREIGN KEY (ISBN) REFERENCES Books ON DELETE CASCADE
+	PRIMARY KEY (Order_id)
 	FOREIGN KEY (Login_id) REFERENCES Customer ON DELETE CASCADE);
+
+CREATE TABLE Order_book(
+	ISBN CHAR(14) 
+	Copies_ordered INTEGER
+	Order_id INTEGER
+	FOREIGN KEY (ISBN) REFERENCES Books ON DELETE CASCADE
+	FOREIGN KEY (Order_id) REFERENCES Orders ON DELETE CASCADE);
 
 CREATE TABLE Feedback(
 	Login_id CHAR(10)
@@ -40,7 +45,6 @@ CREATE TABLE Feedback(
 	PRIMARY KEY (Login_id, ISBN)
 	FOREIGN KEY (Login_id) REFERENCES Customer
 	FOREIGN KEY (ISBN) REFERENCES Books);
-
 
 CREATE TABLE rating( 
 	Score INTEGER CHECK (Score <= 2 AND Score>=0) 

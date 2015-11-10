@@ -26,10 +26,9 @@ class Book(models.Model):
 	subject = models.CharField(max_length=50)
 
 class Order(models.Model):
+	order_id = models.IntegerField(primary_key=True)
 	date_time = models.DateTimeField(blank=False, verbose_name="date time of order")
-	book = models.ForeignKey("Book")
 	customer = models.ForeignKey("Customer")
-	copies = models.IntegerField(blank=False, verbose_name="copies ordered")
 	order_status_choices = (
 		('it', 'in transit to customer'),
 		('pp', 'processing payment'),
@@ -37,8 +36,13 @@ class Order(models.Model):
 		('wh', 'in warehouse')
 	)
 	status = models.CharField(max_length=2, choices=order_status_choices)
+
+class Order_book(models.Model):
+	order = models.ForeignKey(Order)
+	book = models.ForeignKey(Book)
+	copies = models.IntegerField(blank=False, verbose_name="copies ordered")
 	class Meta:
-		unique_together = ('login_id', 'isbn', 'date_time')
+		unique_together = ('order', 'book')
 
 class Feedback(models.Model):
 	rater = models.ForeignKey("Customer")
