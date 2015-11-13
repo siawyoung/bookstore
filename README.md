@@ -13,3 +13,10 @@ DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=1234
 ```
+
+Create admin account by running `python manage.py createsuperuser`
+```
+username: admin
+email: admin@admin.admin
+password: admin
+```
