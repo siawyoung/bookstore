@@ -2,6 +2,7 @@
 @import "vendor/susy";
 @import "vendor/typebase";
 @import "utils";
+@import "palette";
 
 html {
   box-sizing: border-box;
@@ -17,6 +18,8 @@ $max-width: 1200px;
   width: $max-width;
   margin-top: 30px;
 }
+
+@import "buttons";
 
 @import "header";
 @import "book";

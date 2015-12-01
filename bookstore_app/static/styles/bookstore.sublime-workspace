@@ -1,0 +1,3004 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tac",
+				"ta-c	text-align: center;"
+			],
+			[
+				"routes",
+				"routesDirectory"
+			],
+			[
+				"jwt",
+				"jwtMiddleware"
+			],
+			[
+				"alert",
+				"alertNeeded"
+			],
+			[
+				"ping",
+				"pingServices"
+			],
+			[
+				"send",
+				"sendStatus"
+			],
+			[
+				"ser",
+				"serviceQuery"
+			],
+			[
+				"alertCo",
+				"alertCountThreshold"
+			],
+			[
+				"object",
+				"objectId"
+			],
+			[
+				"ip",
+				"ip_address"
+			],
+			[
+				"user",
+				"userServerClass"
+			],
+			[
+				"gener",
+				"generateToken"
+			],
+			[
+				"gene",
+				"generateToken"
+			],
+			[
+				"server",
+				"serverClass"
+			],
+			[
+				"bra",
+				"border-radius"
+			],
+			[
+				"is",
+				"isRequired"
+			],
+			[
+				"Accor",
+				"AccordionItem"
+			],
+			[
+				"accordion-expand",
+				"accordion-expand-all"
+			],
+			[
+				"td",
+				"td-u	text-decoration: underline;"
+			],
+			[
+				"yaho",
+				"yahoo_boss_request"
+			],
+			[
+				"all",
+				"all_photos"
+			],
+			[
+				"last",
+				"last_picture_index"
+			],
+			[
+				"review",
+				"review_photos"
+			],
+			[
+				"first",
+				"first_picture_index"
+			],
+			[
+				"previo",
+				"previous_picture"
+			],
+			[
+				"gros",
+				"gross_floor_area	(_review_info.html.erb)"
+			],
+			[
+				"valdia",
+				"validates_presence_of	(review.rb)"
+			],
+			[
+				"quotation",
+				"quotation_recipients	(quotations_controller.rb)"
+			],
+			[
+				"quotat",
+				"quotation_recepients	(quotations_controller.rb)"
+			],
+			[
+				"quo",
+				"quotation_recipients"
+			],
+			[
+				"quota",
+				"quotation_recepients"
+			],
+			[
+				"New",
+				"NewQuotationMailer	(NewQuotationMailer.rb)"
+			],
+			[
+				"find",
+				"findLike"
+			],
+			[
+				"line",
+				"line-height"
+			],
+			[
+				"addi",
+				"additional_configuration_values"
+			],
+			[
+				"pay",
+				"paypal_commission_fixed_cost"
+			],
+			[
+				"comm",
+				"commission_percentage"
+			],
+			[
+				"price_",
+				"price_and_shipping_method"
+			],
+			[
+				"do",
+				"dob	Insert do |variable| … end"
+			],
+			[
+				"reci",
+				"recipients_info"
+			],
+			[
+				"b",
+				"b	Tag"
+			],
+			[
+				"smp",
+				"smtp_settings"
+			],
+			[
+				"password",
+				"passwordIsInvalid"
+			],
+			[
+				"build",
+				"buildFinished"
+			],
+			[
+				"shipping_method",
+				"shipping_method_name"
+			],
+			[
+				"crate",
+				"createHaggle"
+			],
+			[
+				"destroy",
+				"destroyHaggle"
+			],
+			[
+				"haggle",
+				"haggleButton"
+			],
+			[
+				"getSing",
+				"getSingleListing"
+			],
+			[
+				"Feedb",
+				"FeedbackModal"
+			],
+			[
+				"prevent",
+				"preventDefault"
+			],
+			[
+				"feed",
+				"feedback_rating"
+			],
+			[
+				"fee",
+				"feedback_rating"
+			],
+			[
+				"feedbac",
+				"feedback_message"
+			],
+			[
+				"lister",
+				"listerAcceptBid"
+			],
+			[
+				"postListe",
+				"postListerAcceptBid"
+			],
+			[
+				"postlister",
+				"postListerRejectBid"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"Bi",
+				"BiddingBox"
+			],
+			[
+				"swti",
+				"switchHaggle"
+			],
+			[
+				"active",
+				"active_haggles"
+			],
+			[
+				"switc",
+				"switchHaggle"
+			],
+			[
+				"swit",
+				"switchHaggle"
+			],
+			[
+				"update",
+				"updateState"
+			],
+			[
+				"current",
+				"current_haggle_id"
+			],
+			[
+				"postCreate",
+				"postCreateHeart"
+			],
+			[
+				"getSingle",
+				"getSingleListingAndUpdate"
+			],
+			[
+				"shipping",
+				"shipping_method_id"
+			],
+			[
+				"receive",
+				"receiveSingleListingAndUpdate"
+			],
+			[
+				"Listin",
+				"ListingActionCreators"
+			],
+			[
+				"ListingC",
+				"ListingActionCreators"
+			],
+			[
+				"create",
+				"createMessage"
+			],
+			[
+				"get",
+				"getSingleListing"
+			],
+			[
+				"firstC",
+				"firstActiveConvo"
+			],
+			[
+				"vertica",
+				"vertical-align"
+			],
+			[
+				"Feedback",
+				"FeedbackCard"
+			],
+			[
+				"number",
+				"number_of_stars"
+			],
+			[
+				"User",
+				"UserProfileInfo"
+			],
+			[
+				"component",
+				"componentWillReceiveProps"
+			],
+			[
+				"componen",
+				"componentWillReceiveProps"
+			],
+			[
+				"com",
+				"componentWillReceiveProps"
+			],
+			[
+				"subm",
+				"submitSearch"
+			],
+			[
+				"search",
+				"searchQuery"
+			],
+			[
+				"Search",
+				"SearchCriteria"
+			],
+			[
+				"sear",
+				"searchListings"
+			],
+			[
+				"RECEIVE_",
+				"RECEIVE_SEARCH_RESULTS"
+			],
+			[
+				"profile",
+				"profile_picture"
+			],
+			[
+				"auth",
+				"authResponse"
+			],
+			[
+				"submit",
+				"submitLoginForm"
+			],
+			[
+				"profi",
+				"profile_picture"
+			],
+			[
+				"prof",
+				"profile_picture"
+			],
+			[
+				"re",
+				"registrationEmail"
+			],
+			[
+				"register",
+				"register"
+			],
+			[
+				"Session",
+				"SessionActionCreators"
+			],
+			[
+				"Profile",
+				"ProfilePicture"
+			],
+			[
+				"compo",
+				"componentWillReceiveProps"
+			],
+			[
+				"number_of",
+				"number_of_haggles"
+			],
+			[
+				"getAll",
+				"getAllListings"
+			],
+			[
+				"ship",
+				"shipping_methods"
+			],
+			[
+				"shi",
+				"shipping_methods"
+			],
+			[
+				"shippingCa",
+				"shippingCategory"
+			],
+			[
+				"shippin",
+				"shippingCategories"
+			],
+			[
+				"change",
+				"changeShippingCategoryPrice"
+			],
+			[
+				"shipp",
+				"shippingCategories"
+			],
+			[
+				"new",
+				"newState"
+			],
+			[
+				"selec",
+				"selectShippingCategory"
+			],
+			[
+				"set",
+				"setState"
+			],
+			[
+				"remove",
+				"removeChangeListener"
+			],
+			[
+				"accept",
+				"acceptTypes"
+			],
+			[
+				"shippi",
+				"shipping_categories"
+			],
+			[
+				"preevnt",
+				"preventDefault"
+			],
+			[
+				"registration",
+				"registrationPassword"
+			],
+			[
+				"sub",
+				"submitRegistrationForm"
+			],
+			[
+				"React",
+				"ReactMixin"
+			],
+			[
+				"toggle",
+				"toggleRegister"
+			],
+			[
+				"togg",
+				"toggleRegister"
+			],
+			[
+				"authe",
+				"authenticateFacebook"
+			],
+			[
+				"Shipp",
+				"ShippingCategoriesStore"
+			],
+			[
+				"store",
+				"stores"
+			],
+			[
+				"Lin",
+				"LinkedStateMixin"
+			],
+			[
+				"Listing",
+				"ListingAPIUtils"
+			],
+			[
+				"authen",
+				"authenticatedFacebook"
+			],
+			[
+				"faceb",
+				"facebookPayload"
+			],
+			[
+				"AUTH",
+				"AUTHENTICATE_WITH_FACEBOOK"
+			],
+			[
+				"Sess",
+				"SessionActionCreators"
+			],
+			[
+				"emit",
+				"emitChange"
+			],
+			[
+				"Action",
+				"ActionTypes"
+			],
+			[
+				"App",
+				"AppDispatcher"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/siawyoung/github/bookstore/bookstore_app/templates/user/register.html",
+			"settings":
+			{
+				"buffer_size": 522,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_header.scss",
+			"settings":
+			{
+				"buffer_size": 507,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/siawyoung/github/bookstore/static/styles/vendor/_typebase.scss",
+			"settings":
+			{
+				"buffer_size": 2094,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/siawyoung/github/bookstore/static/styles/_utils.scss",
+			"settings":
+			{
+				"buffer_size": 259,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/siawyoung/github/bookstore/static/styles/_register.scss",
+			"settings":
+			{
+				"buffer_size": 247,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_buttons.scss",
+			"settings":
+			{
+				"buffer_size": 387,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/siawyoung/github/bookstore/static/styles/main.scss",
+			"settings":
+			{
+				"buffer_size": 391,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_register.scss",
+			"settings":
+			{
+				"buffer_size": 164,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_forms.scss",
+			"settings":
+			{
+				"buffer_size": 270,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Ruby/Ruby.sublime-build",
+					""
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Ruby/Ruby.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 233.0,
+		"last_filter": "qc",
+		"selected_items":
+		[
+			[
+				"qc",
+				"Git: Quick Commit"
+			],
+			[
+				"stau",
+				"Git: Quick Status"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"pyth",
+				"Set Syntax: Python"
+			],
+			[
+				"rename",
+				"File: Rename"
+			],
+			[
+				"delete",
+				"ANF: Delete Current File"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"check",
+				"Git: Checkout Current File"
+			],
+			[
+				"dele",
+				"ANF: Delete Current File"
+			],
+			[
+				"de",
+				"ANF: Delete File"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"quic",
+				"Git: Quick Commit"
+			],
+			[
+				"blame",
+				"Git: Blame"
+			],
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
+			[
+				"commit t",
+				"Git: Quick Commit Current File"
+			],
+			[
+				"validate",
+				"Pretty JSON: Validate"
+			],
+			[
+				"markdown",
+				"Set Syntax: Markdown Extended"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"push",
+				"Git: Push"
+			],
+			[
+				"diff",
+				"Git: Diff"
+			],
+			[
+				"checkout",
+				"Git: Checkout"
+			],
+			[
+				"com",
+				"Git: Commit"
+			],
+			[
+				"checkout ",
+				"Git: Checkout Commit"
+			],
+			[
+				"log",
+				"Git: Log"
+			],
+			[
+				"commit",
+				"Git: Commit"
+			],
+			[
+				"ql",
+				"Git: Quick Log Current File"
+			],
+			[
+				"git push",
+				"Git: Push"
+			],
+			[
+				"git diff",
+				"Git: Diff"
+			],
+			[
+				"git log",
+				"Git: Log"
+			],
+			[
+				"re",
+				"File: Rename"
+			],
+			[
+				"name",
+				"File: Copy Name"
+			],
+			[
+				"markd",
+				"Set Syntax: Markdown Extended"
+			],
+			[
+				"markdown extende",
+				"Set Syntax: Markdown Extended"
+			],
+			[
+				"reanme",
+				"File: Rename"
+			],
+			[
+				"markdo",
+				"Set Syntax: Markdown Extended"
+			],
+			[
+				"vinta",
+				"Vintageous: Toggle"
+			],
+			[
+				"vintage",
+				"Vintageous: Toggle"
+			],
+			[
+				"open",
+				"Vintageous: Open .vintageousrc"
+			],
+			[
+				"vint",
+				"Vintageous: Toggle"
+			],
+			[
+				"bab",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"quick ",
+				"Git: Quick Commit"
+			],
+			[
+				"checkou",
+				"Git: Checkout"
+			],
+			[
+				"quick",
+				"Git: Quick Commit"
+			],
+			[
+				"chec",
+				"Git: Checkout Current File"
+			],
+			[
+				"status",
+				"Git: Status"
+			],
+			[
+				"git checkout ",
+				"Git: Checkout Current File"
+			],
+			[
+				"ername",
+				"Insert File Name"
+			],
+			[
+				"r",
+				"File: Rename"
+			],
+			[
+				"stat",
+				"Git: Status"
+			],
+			[
+				"sta",
+				"Git: Status"
+			],
+			[
+				"copy",
+				"File: Copy Name"
+			],
+			[
+				"hint",
+				"JSHint"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"rena",
+				"File: Rename"
+			],
+			[
+				"babel",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"erlang",
+				"Set Syntax: Erlang"
+			],
+			[
+				"mark",
+				"Markdown HTML Preview"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"bash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"go",
+				"Set Syntax: Go"
+			],
+			[
+				"pack",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"packages",
+				"Package Control: List Packages"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"python",
+				"Set Syntax: Python"
+			],
+			[
+				"haskel",
+				"Set Syntax: Haskell"
+			],
+			[
+				"color",
+				"Color Picker"
+			],
+			[
+				"plaint",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"Class",
+				"Snippet: class"
+			],
+			[
+				"HTML",
+				"Set Syntax: HTML"
+			],
+			[
+				"convert tabs",
+				"Indentation: Convert to Tabs"
+			]
+		],
+		"width": 601.0
+	},
+	"console":
+	{
+		"height": 181.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/siawyoung/github/bookstore",
+		"/Users/siawyoung/github/bookstore/bookstore",
+		"/Users/siawyoung/github/bookstore/bookstore_app",
+		"/Users/siawyoung/github/bookstore/bookstore_app/static",
+		"/Users/siawyoung/github/bookstore/bookstore_app/static/styles",
+		"/Users/siawyoung/github/bookstore/bookstore_app/templates",
+		"/Users/siawyoung/github/bookstore/bookstore_app/templates/user",
+		"/Users/siawyoung/github/bookstore/docs"
+	],
+	"file_history":
+	[
+		"/Users/siawyoung/github/bookstore/bookstore_app/static/styles/_header.scss",
+		"/Users/siawyoung/github/bookstore/static/styles/_book.scss",
+		"/Users/siawyoung/github/bookstore/bookstore_app/templates/book/index.html",
+		"/Users/siawyoung/github/bookstore/bookstore_app/templates/user/login.html",
+		"/Users/siawyoung/github/bookstore/static/admin/css/forms.css",
+		"/Users/siawyoung/github/bookstore/bookstore_app/views.py",
+		"/Users/siawyoung/github/bookstore/bookstore_app/static/styles/_palette.scss",
+		"/Users/siawyoung/github/bookstore/bookstore_app/templates/base/index.html",
+		"/Users/siawyoung/github/bookstore/bookstore_app/static/styles/main.scss",
+		"/Users/siawyoung/github/bookstore/bookstore_app/urls.py",
+		"/Users/siawyoung/github/bookstore/.gitignore",
+		"/Users/siawyoung/github/bookstore/static/styles/main.scss",
+		"/Users/siawyoung/github/bookstore/static/styles/_normalize.scss",
+		"/Users/siawyoung/github/bookstore/static/styles/main.css",
+		"/Users/siawyoung/github/bookstore/static/styles/vendor/_typebase.scss",
+		"/Users/siawyoung/github/bookstore/bookstore_app/static/styles/_book.scss",
+		"/Users/siawyoung/github/bookstore/bookstore_app/static/styles/vendor/_typebase.scss",
+		"/Users/siawyoung/github/bookstore/bookstore/settings.py",
+		"/Users/siawyoung/github/bookstore/bookstore_app/static/styles/_utils.scss",
+		"/Users/siawyoung/github/bookstore/bookstore_app/static/book/style.css",
+		"/Users/siawyoung/github/bookstore/bookstore_app/static/styles/global.css",
+		"/Users/siawyoung/github/bookstore/requirements.txt",
+		"/Users/siawyoung/github/bookstore/bookstore_app/templates/user/new.html",
+		"/Users/siawyoung/github/bookstore/bookstore_app/templates/user/show.html",
+		"/Users/siawyoung/github/bookstore/bookstore/urls.py",
+		"/Users/siawyoung/github/bookstore/.env",
+		"/Users/siawyoung/github/bookstore/bookstore_app/landing_page/index.html",
+		"/Users/siawyoung/github/bookstore/bookstore_app/templates/landing_page/index.html",
+		"/Users/siawyoung/siawyoung.github.io/_posts/coding/2015-12-01-mysql-native-bindings-el-capitan.markdown",
+		"/Users/siawyoung/github/rebelping/package.json",
+		"/Users/siawyoung/github/rebelping/src/routes/servers.js",
+		"/Users/siawyoung/github/rebelping/src/alert.js",
+		"/Users/siawyoung/github/rebelping/src/routes/alerts.js",
+		"/Users/siawyoung/github/rebelping/index.js",
+		"/Users/siawyoung/github/rebelping/src/routes.js",
+		"/Users/siawyoung/github/rebelping/config/deploy/production.rb",
+		"/Users/siawyoung/github/rebelping/src/constants.js",
+		"/Users/siawyoung/github/rebelping/.env",
+		"/Users/siawyoung/github/rebelping/config/env.js",
+		"/Users/siawyoung/github/rebelping/src/routes/session.js",
+		"/Users/siawyoung/github/rebelping/src/parse.js",
+		"/Users/siawyoung/github/rebelping/src/loop.js",
+		"/Users/siawyoung/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/siawyoung/github/rebelping/index_single.js",
+		"/Users/siawyoung/github/rebelping/webpack.config.js",
+		"/Users/siawyoung/github/rebelping/src/single_loop.js",
+		"/Users/siawyoung/github/rebelping/dist/main.js",
+		"/Users/siawyoung/github/rebelping/src/routes/server.js",
+		"/Users/siawyoung/github/rebelping/config/deploy.rb",
+		"/Users/siawyoung/github/rebelping/dist/index.js",
+		"/Users/siawyoung/github/rebelping/config/deploy/rebelping.upstart.conf",
+		"/Users/siawyoung/github/rebelping/Capfile",
+		"/Users/siawyoung/github/rebelping/Gemfile",
+		"/Users/siawyoung/github/rebelping/.gitignore",
+		"/Users/siawyoung/github/rebelping/config/deploy/staging.rb",
+		"/Users/siawyoung/github/rebelping/src/fixtures/servers.js",
+		"/Users/siawyoung/github/rebelping/src/fixtures.js",
+		"/Users/siawyoung/github/rebelping/twilio.js",
+		"/Users/siawyoung/github/rebelping/alert.js",
+		"/Users/siawyoung/github/rebelping/config/index.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/AlertShow/AlertShow.scss",
+		"/Users/siawyoung/github/rebelping-front/src/index.html",
+		"/Users/siawyoung/github/rebelping-front/src/views/SettingsEdit/SettingsEdit.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/AlertNew/AlertNew.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/ServerNew/ServerNew.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/AlertNew/AlertNew.scss",
+		"/Users/siawyoung/github/rebelping-front/src/routes/index.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/SettingsEdit/SettingsEdit.scss",
+		"/Users/siawyoung/github/rebelping-front/src/app.js",
+		"/Users/siawyoung/github/rebelping-front/build/webpack/_base.js",
+		"/Users/siawyoung/github/rebelping-front/src/styles/_everything.scss",
+		"/Users/siawyoung/github/rebelping-front/src/styles/vendor/font-awesome/_variables.scss",
+		"/Users/siawyoung/github/rebelping-front/src/styles/vendor/_tagsinput.scss",
+		"/Users/siawyoung/github/rebelping-front/src/views/AlertShow/AlertShow.js",
+		"/Users/siawyoung/github/rebelping-front/src/components/Navbar/Navbar.scss",
+		"/Users/siawyoung/github/rebelping-front/.eslintignore",
+		"/Users/siawyoung/github/rebelping-front/src/scripts/jquery.tagsinput.js",
+		"/Users/siawyoung/github/rebelping-front/src/scripts/jquery.tagsinput.min.js",
+		"/Users/siawyoung/github/rebelping-front/src/scripts/jquery.tagsinput.min.css",
+		"/Users/siawyoung/github/rebelping-front/src/styles/_forms.scss",
+		"/Users/siawyoung/github/rebelping-front/src/components/Navbar/Navbar.js",
+		"/Users/siawyoung/github/rebelping-front/src/components/BoxItem/AlertItem/AlertItem.js",
+		"/Users/siawyoung/github/rebelping-front/src/components/BoxItem/ServerItem/ServerItem.js",
+		"/Users/siawyoung/github/rebelping-front/src/components/BoxItem/BoxItem.js",
+		"/Users/siawyoung/github/rebelping-front/src/components/AccordionItem/AccordionItem.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/AlertIndex/AlertIndex.js",
+		"/Users/siawyoung/github/rebelping-front/src/components/Accordion/Accordion.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/ServerIndex/ServerIndex.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/ServerShow/ServerShow.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/ServerShow/ServerShow.scss",
+		"/Users/siawyoung/github/rebelping-front/src/styles/_buttons.scss",
+		"/Users/siawyoung/github/rebelping-front/src/styles/_palette.scss",
+		"/Users/siawyoung/github/rebelping-front/src/styles/_typography.scss",
+		"/Users/siawyoung/github/rebelping-front/src/components/BoxItem/ServerItem/ServerItem.scss",
+		"/Users/siawyoung/github/rebelping-front/.eslintrc",
+		"/Users/siawyoung/github/rebelping-front/package.json",
+		"/Users/siawyoung/github/rebelping-front/src/reducers/index.js",
+		"/Users/siawyoung/github/rebelping-front/src/components/AccordionItem/AccordionItem.scss",
+		"/Users/siawyoung/github/rebelping-front/config/index.js",
+		"/Users/siawyoung/github/rebelping-front/Capfile",
+		"/Users/siawyoung/github/rebelping-front/config/deploy/production.rb",
+		"/Users/siawyoung/github/rebelping-front/config/deploy.rb",
+		"/Users/siawyoung/github/rebelping-front/Gemfile",
+		"/Users/siawyoung/github/rebelping-front/.gitignore",
+		"/Users/siawyoung/github/rebelping-front/src/components/Accordion/Accordion.scss",
+		"/Users/siawyoung/.tmux.conf",
+		"/Users/siawyoung/github/rebelping-front/src/scripts/accordion.js",
+		"/Users/siawyoung/github/rebelping-front/src/components/BoxItem/AlertItem/AlertItem.scss",
+		"/Users/siawyoung/github/rebelping-front/src/views/AlertIndex/AlertIndex.scss",
+		"/Users/siawyoung/github/rebelping-front/src/views/ServerIndex/ServerIndex.scss",
+		"/Users/siawyoung/github/rebelping-front/karma.entry.js",
+		"/Users/siawyoung/github/rebelping-front/build/karma.js",
+		"/Users/siawyoung/github/rebelping-front/build/webpack-dev-server.js",
+		"/Users/siawyoung/github/rebelping-front/bin/webpack-dev-server.js",
+		"/Users/siawyoung/github/rebelping-front/src/jquery.js",
+		"/Users/siawyoung/github/rebelping-front/jquery-ui.js",
+		"/Users/siawyoung/github/rebelping-front/jquery.js",
+		"/Users/siawyoung/github/rebelping-front/webpack.config.js",
+		"/Users/siawyoung/github/rebelping-front/build/webpack/development.js",
+		"/Users/siawyoung/github/rebelping-front/src/layouts/CoreLayout.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/ServerShow.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/ServerIndex.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/HomeView.js",
+		"/Users/siawyoung/github/rebelping-front/src/utils/index.js",
+		"/Users/siawyoung/github/rebelping-front/src/store/configureStore.js",
+		"/Users/siawyoung/github/rebelping-front/src/containers/Root.js",
+		"/Users/siawyoung/github/rebelping-front/src/views/ServerShow.scss",
+		"/Users/siawyoung/github/rebelping-front/src/reducers/counter.js"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"",
+			"src/",
+			"",
+			"src/",
+			"src",
+			"",
+			"<current file>",
+			"",
+			"src/js",
+			"<project>",
+			"/Users/siawyoung/code/multitenancy_tutorial",
+			"/Users/siawyoung/github/movies/",
+			"/Users/siawyoung/stubs/ng2048/app/scripts",
+			"<project>,-bower_components",
+			"<project>,-bower-components",
+			"<project>",
+			"<open folders>",
+			"/Users/siawyoung/github/Atmosphere",
+			"<project>",
+			"/Users/siawyoung/angular-passport/app",
+			"<project>",
+			"/Users/siawyoung",
+			"<project>",
+			"/Users/siawyoung/Desktop/Design/design/_layouts/jade"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"2.5rem",
+			"border-box",
+			"AppDirec",
+			"jwt",
+			"pclient",
+			"serverResults",
+			"Assets",
+			"jsonwebtoken",
+			"idnex",
+			"/* 1 */",
+			"/* 2 */",
+			"./src/parse",
+			"dotenv",
+			"9001",
+			"1.4rem",
+			"removeTag",
+			"remove",
+			"form-group",
+			"7ED321",
+			"449CFA",
+			"okay-green",
+			"propTypes",
+			"combineReducer",
+			"Root",
+			"expand",
+			"plugins",
+			"\"",
+			";",
+			"class=",
+			"h3",
+			"h1",
+			"<>",
+			"proxy error",
+			"3030",
+			"{tml}",
+			" it ",
+			"we",
+			" we ",
+			"we",
+			"today",
+			" he ",
+			" she ",
+			" she",
+			"she",
+			" me ",
+			" U ",
+			" I ",
+			" u ",
+			" i ",
+			"setTim",
+			"@photo",
+			"ajax-loader",
+			"nav_thumbs",
+			"nav-thumbs",
+			"ajax-loader",
+			"debugger",
+			"findFirstPhotoIndexThatBelongs",
+			"debugger",
+			".eq",
+			"eq",
+			"different",
+			"photos_with_adjacent",
+			"doctype",
+			"DEFAULT",
+			"console.log",
+			"console.log(\"\");",
+			"reload",
+			"show",
+			"different",
+			"pry",
+			"debugger",
+			"pry",
+			"tags_attributes",
+			"tag_attributes",
+			"name",
+			"photos_with_adjacent",
+			"35px 150px",
+			"login-register",
+			"col-md-8 centered",
+			"debugger",
+			"pry",
+			"debugger",
+			"photos_with_adjacent",
+			"get_review_photo",
+			"debugger",
+			"get_review_photo",
+			"debugger",
+			"reviews",
+			"review",
+			"sq.",
+			"review",
+			"rooms",
+			"Number",
+			"review_management",
+			"font-url",
+			"assets.path",
+			"\\{%.((\\w)| )*.%\\}",
+			"root_url",
+			"recepient",
+			"seller_email",
+			"skills",
+			"tag-input",
+			"sellers",
+			"overflow-y",
+			"company",
+			"comapyn",
+			"hagglepit",
+			"overflow",
+			".image",
+			"alert",
+			"findLike",
+			"findLike'",
+			"findLike",
+			"end",
+			"Init",
+			"interior",
+			"@primary_tag",
+			"showImage",
+			"get_review_photo_comment",
+			"ago",
+			"alert",
+			"ajax-loader",
+			"nav_thumbs",
+			"nav-thumbs",
+			"black.png",
+			"rg-image",
+			"addImageWrapper",
+			"tmpl"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"'",
+			"",
+			" {it} ",
+			" {we} ",
+			" {he} ",
+			" {she} ",
+			" {me} ",
+			" {U} ",
+			" {I} ",
+			" {u} ",
+			" {i} ",
+			"asset-url",
+			"```",
+			"recipient",
+			"11.11.11.11",
+			"PowerUser",
+			"className",
+			"tabIndex",
+			"className",
+			"<br />",
+			"className",
+			"<br />",
+			"className",
+			"<br />",
+			"className",
+			"ChatRoomID",
+			"send_chat_message",
+			"ChatRoomId",
+			"create_user",
+			"validate_message",
+			"get_message_type",
+			"valid_main_message_type",
+			"Name",
+			"looking",
+			"action done",
+			"ClickSem",
+			"011100000000000100",
+			"adata",
+			"high",
+			"JSEditor",
+			"CSSEditor",
+			"HTMLEditor",
+			"0.5",
+			"bird",
+			"finch",
+			"/fhoton/js",
+			"/fhoton/css",
+			"/fhoton/css/",
+			"/fhoton/",
+			"/",
+			"",
+			"sixth",
+			"fifth",
+			"fourth",
+			"third",
+			"first",
+			"",
+			"Carbos",
+			"Protein",
+			"Calories",
+			"sixth",
+			"fifth",
+			"fourth",
+			"third",
+			"second",
+			"161,201,100,1",
+			").toFixed",
+			"CaloriesTally\" ).val( ",
+			"parseFloat(session",
+			"y\").toFixed(2) ",
+			"+ \"g\" ); ",
+			", 0",
+			"Tally",
+			"sixth",
+			"fifth",
+			"fourth",
+			"forth",
+			"third",
+			"second",
+			"set",
+			"sixth",
+			"fifth",
+			"fourth",
+			"third",
+			"second",
+			"sixth",
+			"fifth",
+			"fourth",
+			"third",
+			"second",
+			"Price",
+			"Fibre",
+			"Fats",
+			"Protein",
+			"first",
+			"second",
+			"third",
+			"fourth",
+			"sixth",
+			"first",
+			"second",
+			"third",
+			"fourth",
+			"fifth",
+			"background",
+			"sixth",
+			"fifth",
+			"fourth",
+			"third",
+			"second",
+			"sixth",
+			"fifth",
+			"fourth",
+			"third",
+			"sixth",
+			"fifth",
+			"fourth",
+			"third",
+			"second"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/siawyoung/github/bookstore/bookstore_app/templates/user/register.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 522,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								121,
+								121
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"apply_syntax_touched": true,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Afterglow.tmTheme",
+							"open_with_edit": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "_header.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 507,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								229,
+								229
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"apply_syntax_touched": true,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Afterglow.tmTheme",
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/siawyoung/github/bookstore/static/styles/vendor/_typebase.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2094,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1643,
+								1643
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"apply_syntax_touched": true,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Afterglow.tmTheme",
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1116.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/siawyoung/github/bookstore/static/styles/_utils.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 259,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								159,
+								159
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"apply_syntax_touched": true,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Afterglow.tmTheme",
+							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/siawyoung/github/bookstore/static/styles/_register.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 247,
+						"regions":
+						{
+							"gutter_color_216":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/blue.png",
+								"regions":
+								[
+									[
+										216,
+										245
+									]
+								],
+								"scope": "gutter_color"
+							}
+						},
+						"selection":
+						[
+							[
+								183,
+								183
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"apply_syntax_touched": true,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Afterglow.tmTheme",
+							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "_buttons.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 387,
+						"regions":
+						{
+							"gutter_color_0":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/white.png",
+								"regions":
+								[
+									[
+										0,
+										56
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_188":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/blue.png",
+								"regions":
+								[
+									[
+										188,
+										214
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_215":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/blue.png",
+								"regions":
+								[
+									[
+										215,
+										254
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_259":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/green.png",
+								"regions":
+								[
+									[
+										259,
+										286
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_287":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/green.png",
+								"regions":
+								[
+									[
+										287,
+										327
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_332":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/red.png",
+								"regions":
+								[
+									[
+										332,
+										351
+									]
+								],
+								"scope": "gutter_color"
+							}
+						},
+						"selection":
+						[
+							[
+								387,
+								387
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"_anf_new": "",
+							"apply_syntax_touched": true,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Afterglow.tmTheme",
+							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/siawyoung/github/bookstore/static/styles/main.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 391,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								353,
+								353
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"apply_syntax_touched": true,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Afterglow.tmTheme",
+							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "_register.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 164,
+						"regions":
+						{
+							"gutter_color_133":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/blue.png",
+								"regions":
+								[
+									[
+										133,
+										162
+									]
+								],
+								"scope": "gutter_color"
+							}
+						},
+						"selection":
+						[
+							[
+								162,
+								162
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"_anf_new": "",
+							"apply_syntax_touched": true,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Afterglow.tmTheme",
+							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "_forms.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 270,
+						"regions":
+						{
+							"gutter_color_200":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#aaa.png",
+								"regions":
+								[
+									[
+										200,
+										227
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_242":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#aaa.png",
+								"regions":
+								[
+									[
+										200,
+										227
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_305":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#aaa.png",
+								"regions":
+								[
+									[
+										176,
+										227
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_327":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#aaa.png",
+								"regions":
+								[
+									[
+										202,
+										227
+									]
+								],
+								"scope": "gutter_color"
+							},
+							"gutter_color_58":
+							{
+								"flags": 144,
+								"icon": "Cache/GutterColor/#aaa.png",
+								"regions":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"scope": "gutter_color"
+							}
+						},
+						"selection":
+						[
+							[
+								176,
+								176
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"apply_syntax_touched": true,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Afterglow.tmTheme",
+							"open_with_edit": true,
+							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.autopep8":
+	{
+		"height": 148.0
+	},
+	"output.exec":
+	{
+		"height": 223.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git-checkout":
+	{
+		"height": 134.0
+	},
+	"output.git-commit":
+	{
+		"height": 146.0
+	},
+	"output.git-push":
+	{
+		"height": 146.0
+	},
+	"output.markdown":
+	{
+		"height": 148.0
+	},
+	"output.mde":
+	{
+		"height": 134.0
+	},
+	"pinned_build_system": "",
+	"project": "bookstore.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"header",
+				"bookstore_app/static/styles/_header.scss"
+			],
+			[
+				"typebase",
+				"static/styles/vendor/_typebase.scss"
+			],
+			[
+				"util",
+				"static/styles/_utils.scss"
+			],
+			[
+				"register",
+				"static/styles/_register.scss"
+			],
+			[
+				"form",
+				"static/admin/css/forms.css"
+			],
+			[
+				"main",
+				"static/styles/main.scss"
+			],
+			[
+				"git",
+				".gitignore"
+			],
+			[
+				"norm",
+				"static/styles/_normalize.scss"
+			],
+			[
+				"mainscss",
+				"static/styles/main.scss"
+			],
+			[
+				"urls",
+				"bookstore_app/urls.py"
+			],
+			[
+				"book.scss",
+				"static/styles/_book.scss"
+			],
+			[
+				"settin",
+				"bookstore/settings.py"
+			],
+			[
+				"reu",
+				"requirements.txt"
+			],
+			[
+				".",
+				".env"
+			],
+			[
+				"reuir",
+				"requirements.txt"
+			],
+			[
+				"packge",
+				"package.json"
+			],
+			[
+				"inde",
+				"index.js"
+			],
+			[
+				"route",
+				"src/routes.js"
+			],
+			[
+				"routes",
+				"src/routes.js"
+			],
+			[
+				"package",
+				"package.json"
+			],
+			[
+				"prod",
+				"config/deploy/production.rb"
+			],
+			[
+				"index",
+				"index.js"
+			],
+			[
+				"loop",
+				"src/loop.js"
+			],
+			[
+				"cosnta",
+				"src/constants.js"
+			],
+			[
+				"alert",
+				"src/alert.js"
+			],
+			[
+				".en",
+				".env"
+			],
+			[
+				"env",
+				"config/env.js"
+			],
+			[
+				"produ",
+				"config/deploy/production.rb"
+			],
+			[
+				"parse",
+				"src/parse.js"
+			],
+			[
+				"constan",
+				"src/constants.js"
+			],
+			[
+				"server",
+				"src/routes/server.js"
+			],
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"server.js",
+				"src/routes/server.js"
+			],
+			[
+				"idnex_",
+				"index_single.js"
+			],
+			[
+				"",
+				"webpack.config.js"
+			],
+			[
+				"wepac",
+				"webpack.config.js"
+			],
+			[
+				"index.js",
+				"index.js"
+			],
+			[
+				".env",
+				".env"
+			],
+			[
+				"produc",
+				"config/deploy/production.rb"
+			],
+			[
+				"env.",
+				"config/env.js"
+			],
+			[
+				"pa",
+				"package.json"
+			],
+			[
+				"pck",
+				"package.json"
+			],
+			[
+				"pro",
+				"config/deploy/production.rb"
+			],
+			[
+				"loo",
+				"src/loop.js"
+			],
+			[
+				"idnex.js",
+				"index.js"
+			],
+			[
+				"alert.js",
+				"alert.js"
+			],
+			[
+				"deploy",
+				"config/deploy.rb"
+			],
+			[
+				"parse.js",
+				"src/parse.js"
+			],
+			[
+				"webpack",
+				"webpack.config.js"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"gitig",
+				".gitignore"
+			],
+			[
+				"env.js",
+				"config/env.js"
+			],
+			[
+				"webp",
+				"webpack.config.js"
+			],
+			[
+				"twilio",
+				"twilio.js"
+			],
+			[
+				"index.scss",
+				"src/views/AlertIndex/AlertIndex.scss"
+			],
+			[
+				"alertscss",
+				"src/views/AlertShow/AlertShow.scss"
+			],
+			[
+				"alertindex",
+				"src/views/AlertIndex/AlertIndex.js"
+			],
+			[
+				"index.scs",
+				"src/views/ServerIndex/ServerIndex.scss"
+			],
+			[
+				"serverindex",
+				"src/views/ServerIndex/ServerIndex.js"
+			],
+			[
+				"rutes",
+				"src/routes/index.js"
+			],
+			[
+				"app.js",
+				"src/app.js"
+			],
+			[
+				"_base",
+				"build/webpack/_base.js"
+			],
+			[
+				"index.html",
+				"src/index.html"
+			],
+			[
+				"variab",
+				"src/styles/vendor/font-awesome/_variables.scss"
+			],
+			[
+				"_var",
+				"src/styles/vendor/font-awesome/_variables.scss"
+			],
+			[
+				"esli",
+				".eslintignore"
+			],
+			[
+				"eslin",
+				".eslintignore"
+			],
+			[
+				"editscs",
+				"src/views/SettingsEdit/SettingsEdit.scss"
+			],
+			[
+				"settingsedit",
+				"src/views/SettingsEdit/SettingsEdit.js"
+			],
+			[
+				"alertshow",
+				"src/views/AlertShow/AlertShow.scss"
+			],
+			[
+				"alerts",
+				"src/views/AlertShow/AlertShow.js"
+			],
+			[
+				"every",
+				"src/styles/_everything.scss"
+			],
+			[
+				"serveritemscs",
+				"src/components/BoxItem/ServerItem/ServerItem.scss"
+			],
+			[
+				"button",
+				"src/styles/_buttons.scss"
+			],
+			[
+				"eslint",
+				".eslintrc"
+			],
+			[
+				"navbar",
+				"src/components/Navbar/Navbar.js"
+			],
+			[
+				"typo",
+				"src/styles/_typography.scss"
+			],
+			[
+				"cap",
+				"Capfile"
+			],
+			[
+				"gem",
+				"Gemfile"
+			],
+			[
+				"deplo",
+				"config/deploy.rb"
+			],
+			[
+				"capfile",
+				"Capfile"
+			],
+			[
+				"accord",
+				"src/components/Accordion/Accordion.js"
+			],
+			[
+				"alertitem",
+				"src/components/BoxItem/AlertItem/AlertItem.js"
+			],
+			[
+				"accordio",
+				"src/components/Accordion/Accordion.js"
+			],
+			[
+				"boxite",
+				"src/components/BoxItem/BoxItem.js"
+			],
+			[
+				"serverite",
+				"src/components/BoxItem/ServerItem/ServerItem.js"
+			],
+			[
+				"accordite",
+				"src/components/AccordionItem/AccordionItem.js"
+			],
+			[
+				"boxitem",
+				"src/components/BoxItem/BoxItem.js"
+			],
+			[
+				"serveite",
+				"src/components/BoxItem/ServerItem/ServerItem.js"
+			],
+			[
+				"alertsho",
+				"src/views/AlertShow/AlertShow.js"
+			],
+			[
+				"alertinde",
+				"src/views/AlertIndex/AlertIndex.js"
+			],
+			[
+				"accord.scs",
+				"src/components/Accordion/Accordion.scss"
+			],
+			[
+				"navbar.scs",
+				"src/components/Navbar/Navbar.scss"
+			],
+			[
+				"alertite",
+				"src/components/BoxItem/AlertItem/AlertItem.js"
+			],
+			[
+				"serverindex.sc",
+				"src/views/ServerIndex/ServerIndex.scss"
+			],
+			[
+				"aiscs",
+				"src/views/AlertIndex/AlertIndex.scss"
+			],
+			[
+				"nav",
+				"src/components/Navbar/Navbar.js"
+			],
+			[
+				"serindex",
+				"src/views/ServerIndex/ServerIndex.js"
+			],
+			[
+				"serveritem",
+				"src/components/BoxItem/ServerItem/ServerItem.js"
+			],
+			[
+				"servershow",
+				"src/views/ServerShow.js"
+			],
+			[
+				"webpack-dev",
+				"bin/webpack-dev-server.js"
+			],
+			[
+				"paca",
+				"package.json"
+			],
+			[
+				"config.js",
+				"webpack.config.js"
+			],
+			[
+				"karma",
+				"karma.entry.js"
+			],
+			[
+				"homeview",
+				"src/views/HomeView.js"
+			],
+			[
+				"utilsinde",
+				"src/utils/index.js"
+			],
+			[
+				"con",
+				"src/store/configureStore.js"
+			],
+			[
+				"corel",
+				"src/layouts/CoreLayout.js"
+			],
+			[
+				"root",
+				"src/containers/Root.js"
+			],
+			[
+				"redcout",
+				"src/reducers/counter.js"
+			],
+			[
+				"corelay",
+				"src/layouts/CoreLayout.js"
+			],
+			[
+				"devt",
+				"src/containers/DevToolsWindow.js"
+			],
+			[
+				"redindex",
+				"src/reducers/index.js"
+			],
+			[
+				"configurest",
+				"src/store/configureStore.js"
+			],
+			[
+				"counter",
+				"src/reducers/counter.js"
+			],
+			[
+				"dev",
+				"src/containers/DevTools.js"
+			],
+			[
+				"de",
+				"config/deploy.rb"
+			],
+			[
+				"counte",
+				"src/actions/counter.js"
+			],
+			[
+				"corela",
+				"src/layouts/CoreLayout.js"
+			],
+			[
+				"serverscss",
+				"src/components/BoxItem/ServerItem/ServerItem.scss"
+			],
+			[
+				"uti",
+				"src/styles/_utils.scss"
+			],
+			[
+				"utils",
+				"src/styles/_utils.scss"
+			],
+			[
+				"tpyo",
+				"src/styles/_typography.scss"
+			],
+			[
+				"corelayou",
+				"src/layouts/CoreLayout.js"
+			],
+			[
+				"serverinde",
+				"src/views/ServerIndex.js"
+			],
+			[
+				"corelayo",
+				"src/layouts/CoreLayout.scss"
+			],
+			[
+				"nav.scs",
+				"src/components/Navbar/Navbar.scss"
+			],
+			[
+				"boxitem.scss",
+				"src/components/BoxItem/BoxItem.scss"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 208.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
