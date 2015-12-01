@@ -1,28 +1,21 @@
 {% extends 'base/index.html' %}
+{% load num_range %}
 
 {% block content %}
+
 <h3>All Books</h3>
 <p>This is some good shit. Lorem ipsum man.</p>
-<div>
+<div class="books">
+
+  {% num_range 10 as some_range %}
+  {% for i in some_range %}
   <div class="single-book">
-    <h4>Harry Potter and the Philosopher's Stone</h4>
+    <img src="http://placehold.it/350x350" alt="">
+    <h4>Some Damn Long and Drawn Out Story: Part {{i}}</h4>
     <h4 class="price">$19.99</h4>
   </div>
-  <div class="single-book">
-    <h4>Harry Potter and the Philosopher's Stone</h4>
-    <h4 class="price">$19.99</h4>
-  </div>
-  <div class="single-book">
-    <h4>Harry Potter and the Philosopher's Stone</h4>
-    <h4 class="price">$19.99</h4>
-  </div>
-  <div class="single-book">
-    <h4>Harry Potter and the Philosopher's Stone</h4>
-    <h4 class="price">$19.99</h4>
-  </div>
-  <div class="single-book">
-    <h4>Harry Potter and the Philosopher's Stone</h4>
-    <h4 class="price">$19.99</h4>
-  </div>
+  {% endfor %}
+
 </div>
+
 {% endblock %}
