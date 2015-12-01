@@ -5,3 +5,7 @@
   width: 500px;
   margin-top: 50px;
 }
+
+button[type="submit"] {
+  @include light-blue-button;
+}

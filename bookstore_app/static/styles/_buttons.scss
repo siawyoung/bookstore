@@ -1,0 +1,19 @@
+@mixin button($background-color: white, $color: black) {
+  border-radius: 5px;
+  background-color: $background-color;
+  padding: 8px 35px;
+  border: 2px solid $color;
+  color: $color;
+};
+
+@mixin light-blue-button {
+  @include button($color: $light-blue);
+};
+
+@mixin light-green-button {
+  @include button($color: $light-green);
+};
+
+@mixin red-button {
+  @include button($color: $red);
+};
