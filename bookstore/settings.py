@@ -12,8 +12,13 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import pdb
+from os.path import abspath, basename, dirname, join, normpath
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# DJANGO_ROOT = dirname(dirname(abspath(__file__)))
+# SITE_ROOT = dirname(DJANGO_ROOT)
+# SITE_NAME = basename(DJANGO_ROOT)
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pipeline',
     'bookstore_app'
 )
 
@@ -104,3 +110,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = normpath(join(BASE_DIR, 'static'))
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+STATICFILES_DIRS = ()
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+PIPELINE_COMPILERS = (
+  'pipeline.compilers.sass.SASSCompiler',
+)
+
+PIPELINE_CSS = {
+    'main': {
+        'source_filenames': (
+          'styles/main.scss',
+        ),
+        'output_filename': 'main.css'
+    }
+}
