@@ -5,6 +5,12 @@ def index(req):
     # template = loader.get_template('book/index.html')
     return render(req, 'book/index.html')
 
+def register(req):
+    return render(req, 'user/register.html')
+
+def login(req):
+    return render(req, 'user/login.html')
+
 # def lol(req):
 #     return HttpResponse("lol")
 

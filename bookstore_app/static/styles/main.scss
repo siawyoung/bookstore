@@ -1,9 +1,14 @@
 @import "vendor/normalize";
 @import "vendor/susy";
 @import "vendor/typebase";
-
 @import "utils";
 
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 $max-width: 1200px;
 

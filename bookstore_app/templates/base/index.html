@@ -1,0 +1,31 @@
+{% load pipeline %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Amazebooks</title>
+  {% stylesheet 'main' %}
+</head>
+<body>
+
+  <header>
+    <div id="wrapper">
+      <div id="logo">
+        Amazebooks
+      </div>
+      <div id="navigation">
+        <ul>
+          <li>Profile</li>
+          <li>Logout</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <div id="view-container">
+    {% block content %}{% endblock %}
+  </div>
+
+</body>
+</html>
