@@ -17,6 +17,7 @@
 }
 
 .book-show {
+  @include clearfix;
   .cover {
     @include span(2 of 6);
     img {
@@ -40,10 +41,26 @@
 
   .title {
     @include span(6 of 8);
+    h3 {
+      margin-bottom: 20px;
+    }
   }
 
   .price {
     @include span(2 of 8);
     @include last;
+    h3 {
+      margin-bottom: 8px;
+    }
+    label, input {
+      display: inline-block;
+      width: 50%;
+    }
+  }
+
+  .title, .price {
+    p {
+      margin: 0;
+    }
   }
 }
