@@ -10,7 +10,7 @@
 <body>
 
   <header>
-    <div id="wrapper">
+    <div class="wrapper">
       <div id="logo">
         <a href="/">Amazebooks</a>
       </div>
@@ -23,9 +23,16 @@
     </div>
   </header>
 
-  <div id="view-container">
+  <div class="view-container" id="footer-wrapper">
     {% block content %}{% endblock %}
+    <div id="footer-helper"></div>
   </div>
+
+  <footer>
+    <div class="wrapper">
+      This is a footer.
+    </div>
+  </footer>
 
 </body>
 </html>
