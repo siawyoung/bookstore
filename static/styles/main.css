@@ -361,7 +361,7 @@ th {
 html {
   /* Change default typefaces here */
   font-family: sans-serif;
-  font-size: 137.5%;
+  font-size: 125%;
   -webkit-font-smoothing: antialiased; }
 
 /* Copy & Lists */
@@ -406,13 +406,13 @@ h3 {
   font-size: 1.414rem; }
 
 h4 {
-  font-size: 0.707rem; }
+  font-size: 1.08769rem; }
 
 h5 {
-  font-size: 0.47133rem; }
+  font-size: 0.88375rem; }
 
 h6 {
-  font-size: 0.3535rem; }
+  font-size: 0.5656rem; }
 
 /* Tables */
 table {
@@ -421,7 +421,7 @@ table {
   border-collapse: collapse; }
   table td, table th {
     padding: 0;
-    line-height: 33px; }
+    line-height: 30px; }
 
 /* Code blocks */
 code {
@@ -478,5 +478,30 @@ header {
       margin: 0 15px;
       font-size: 1.3rem;
       cursor: pointer; }
+
+.single-book {
+  width: 24.05063%;
+  float: left;
+  margin-bottom: 1.26582%;
+  min-height: 250px;
+  padding: 15px;
+  position: relative; }
+  .single-book:nth-child(4n + 1) {
+    margin-left: 0;
+    margin-right: -100%;
+    clear: both;
+    margin-left: 0; }
+  .single-book:nth-child(4n + 2) {
+    margin-left: 25.31646%;
+    margin-right: -100%;
+    clear: none; }
+  .single-book:nth-child(4n + 3) {
+    margin-left: 50.63291%;
+    margin-right: -100%;
+    clear: none; }
+  .single-book:nth-child(4n + 4) {
+    margin-left: 75.94937%;
+    margin-right: -100%;
+    clear: none; }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,8 @@
+.single-book {
+  @include gallery(4 of 16);
+  margin-bottom: gutter(16);
+
+  min-height: 250px;
+  padding: 15px;
+  position: relative;
+}
