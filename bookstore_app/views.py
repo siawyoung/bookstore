@@ -11,6 +11,9 @@ def register(req):
 def login(req):
     return render(req, 'user/login.html')
 
+def book(req, isbn):
+    return render(req, 'book/show.html')
+
 # def lol(req):
 #     return HttpResponse("lol")
 
