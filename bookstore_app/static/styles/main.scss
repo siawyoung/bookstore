@@ -7,13 +7,26 @@
 html {
   box-sizing: border-box;
 }
+
+html, body {
+  height: 100%;
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
 $max-width: 1200px;
+$header-height: 140px;
+$footer-height: 140px;
 
-#view-container {
+.wrapper {
+  margin: 0 auto;
+  width: $max-width;
+  height: inherit;
+}
+
+.view-container {
   margin: 0 auto;
   width: $max-width;
   margin-top: 30px;
@@ -25,3 +38,4 @@ $max-width: 1200px;
 @import "book";
 @import "register";
 @import "forms";
+@import "footer";

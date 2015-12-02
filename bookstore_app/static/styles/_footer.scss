@@ -1,0 +1,16 @@
+#footer-wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -$footer-height;
+}
+
+footer, #footer-helper {
+  height: $footer-height;
+}
+
+footer {
+  margin-top: 70px;
+  width: 100%;
+  background: $grey;
+}
