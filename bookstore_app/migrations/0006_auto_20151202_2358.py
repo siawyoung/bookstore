@@ -18,11 +18,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='customer',
-            name='cc_num',
-            field=models.CharField(max_length=12, verbose_name=b'credit card number'),
-        ),
-        migrations.AlterField(
-            model_name='customer',
             name='password',
             field=models.CharField(max_length=16),
         ),

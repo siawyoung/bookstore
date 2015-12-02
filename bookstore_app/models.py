@@ -5,7 +5,7 @@ class Customer(models.Model):
 	login_id = models.CharField(max_length=20, primary_key=True, blank=False)
 	name = models.CharField(max_length=50, blank=False)
 	password = models.CharField(max_length=16, blank=False)
-	cc_num = models.CharField(max_length=12, verbose_name="credit card number")
+	cc_num = models.CharField(max_length=16, verbose_name="credit card number")
 	address = models.CharField(max_length=100)
 	phone_num = models.CharField(max_length=10)
 
