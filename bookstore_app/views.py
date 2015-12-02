@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import Http404
 from django.views.generic import View
-from .models import Customer
+from .models import Customer, Feedback, Book
 
 def index(req):
-    return render(req, 'book/index.html')
+    # books = Book.objects.all()
+    return render(req, 'book/index.html', { 'books': books })
 
 def register(req):
     return render(req, 'user/register.html')
@@ -26,16 +27,35 @@ class OrderView(View):
         TODO: This is the GET endpoint for the user's cart
         @orders = localStorage
         """
+        orders = None
+        # return render(req, 'order/index.html', { 'orders': orders })
         pass
     def post(self, req):
         """
-        TODO: This is the POST endpoint for the user to submit his orders in the cart
+        TODO: This is the POST endpoint for the user to submit the orders that are in the cart
         """
         pass
 
 class BookView(View):
     def get(self, req, isbn):
-        return render(req, 'book/show.html')
+        """
+        Need these variables to inject into the view:
+        @book = the book object
+        @feedback = feedback belonging to the book
+        @show_feedback_form = Boolean to check if the form should be shown
+        @recommendations = book recommendations
+        """
+        book = None
+        feedbacks = None
+        show_feedback_form = None
+        recommendations = None
+
+        return render(req, 'book/show.html', {
+            'book': book,
+            'feedbacks': feedbacks,
+            'show_feedback_form': show_feedback_form,
+            'recommendations': recommendations
+        })
     def post(self, req):
         """
         TODO: This is the POST endpoint for the store manager to add a new book
@@ -54,7 +74,24 @@ class UserView(View):
         except Customer.DoesNotExist:
             raise Http404("User does not exist")
         truncated_cc_num = user.cc_num[-4:]
-        return render(req, 'user/show.html', {'user': user, 'truncated_cc_num': truncated_cc_num})
+
+        """
+        Need these variables to inject into the view:
+        @orders (all of user's orders)
+        @feedback (all of the user's feedback)
+        @ratings (all of the user's ratings and their associated feedback)
+        """
+        orders = None
+        feedbacks = None
+        ratings = None
+
+        return render(req, 'user/show.html', {
+            'user': user,
+            'truncated_cc_num': truncated_cc_num,
+            'orders': orders,
+            'feedbacks': feedbacks,
+            'ratings': ratings
+        })
 
     def post(self, req):
         """
@@ -66,7 +103,12 @@ def search(req, query):
     """
     GET /books/search?=
     TODO: This is the GET endpoint for searching books
+    This will use the same template as GET / which is 'book/index'
+
+    @books = books that fulfil the search query
     """
+    books = None
+    return render(req, 'book/index.html', { 'books': books })
     pass
 
 def create_feedback(req, book_id):
@@ -83,6 +125,8 @@ def feedback(req, feedback_id):
     TODO: This is the GET endpoint for individual feedback
     This should check if the user has already rated this feedback
     """
+    # feedback = Feedback.objects.get(pk: feedback_id)
+    # return render(req, 'feedback/show.html', { 'feedback': feedback })
     pass
 
 def rating(req, feedback_id):
@@ -98,10 +142,9 @@ def statistics(req):
     GET /statistics
     TODO: This is the GET endpoint for seeing the store statistics
     """
+    # return render(req, 'admin/statistics.html')
     pass
 
-# def get_book_rec(isbn):
-#     return 
 
 # class DocumentView(Resource):  
   
