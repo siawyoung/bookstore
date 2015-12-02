@@ -84,6 +84,8 @@ def insert_customer(apps, schema_editor):
 
 def insert_feedback(apps,schema_editor):
 	Feedback = apps.get_model("bookstore_app", "Feedback")
+	Book = apps.get_model("bookstore_app", "Book")
+	Customer = apps.get_model("bookstore_app", "Customer")
 	raw_data=[['oman2483','978-0399536496', 3,'Mind over matter on this one guys, if you"re really determined, you can accomplish anything. if you can see it, you can achieve it.']
 	,['hris79','978-0399536496',8,'I Came: The title of this book was very deceptive. I found each image to be uniquely arousing.']
 	,['ardy46329','978-0399536496',5,'Directions unclear, got paper cuts on my dick. Would not recommend.']
@@ -95,7 +97,7 @@ def insert_feedback(apps,schema_editor):
 	,['ings9871','978-1936976027',1,'The author is a dick']]
 
 	for feedbackvalues in raw_data:
-		useri = Feedback(rater=feedbackvalues[0],book=feedbackvalues[1],score=feedbackvalues[2],short_text=feedbackvalues[3])
+		useri = Feedback(rater=Customer.objects.filter(pk=feedbackvalues[0])[0],book=Book.objects.filter(pk=feedbackvalues[1])[0],score=feedbackvalues[2],short_text=feedbackvalues[3])
 		useri.save()
 
 def insert_rating(apps, schema_editor):
