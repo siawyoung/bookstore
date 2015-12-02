@@ -15,6 +15,13 @@ def login(req):
 def book(req, isbn):
     return render(req, 'book/show.html')
 
+def user(req, id):
+	try:
+		user = Customer.objects.get(login_id=id)
+	except Customer.DoesNotExist:
+		raise Http404("User does not exist")
+	return render(req, 'user/show.html', {user: user})
+
 # def lol(req):
 #     return HttpResponse("lol")
 
