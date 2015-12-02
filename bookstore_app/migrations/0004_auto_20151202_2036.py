@@ -102,6 +102,8 @@ def insert_feedback(apps,schema_editor):
 
 def insert_rating(apps, schema_editor):
 	Rating = apps.get_model("bookstore_app", "Rating")
+	Book = apps.get_model("bookstore_app", "Book")
+	Customer = apps.get_model("bookstore_app", "Customer")
 	raw_data=[[2,'978-0399536496','oman2483','rios31969']
 	,[2,'978-0399536496','hris79','hlin43266']
 	,[2,'978-0399536496','ardy46329','witz646']
@@ -115,7 +117,7 @@ def insert_rating(apps, schema_editor):
 	,[2,'978-1936976027','ings9871','uvic31018']]
 
 	for ratingvalues in raw_data:
-		useri = Rating(score=ratingvalues[0], book=ratingvalues[1], ratee=ratingvalues[2], rater=ratingvalues[3])
+		useri = Rating(score=ratingvalues[0], book=Book.objects.filter(pk=ratingvalues[1])[0], ratee=Customer.objects.filter(pk=ratingvalues[2])[0], rater=Customer.objects.filter(pk=ratingvalues[3])[0])
 		useri.save()
 
 
@@ -123,6 +125,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('bookstore_app', '0003_auto_20151202_1812'),
+        ('bookstore_app', '0006_auto_20151202_2358'),
     ]
 
     operations = [
