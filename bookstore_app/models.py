@@ -22,6 +22,7 @@ class Book(models.Model):
 	year_op = models.DateTimeField(blank=False, verbose_name="year of purchase")
 	copies = models.IntegerField(blank=False, verbose_name="available copies")
 	price = models.DecimalField(max_digits=6, decimal_places=2, blank=False)
+	url = models.CharField(max_length=100)
 	book_format_choices = (
 		('hc', 'hardcover'),
 		('sc', 'softcover')
