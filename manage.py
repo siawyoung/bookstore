@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
-
+import django
 import dotenv
 dotenv.read_dotenv()
 

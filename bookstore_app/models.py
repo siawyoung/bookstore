@@ -19,7 +19,7 @@ class Book(models.Model):
 	title = models.CharField(max_length=100, blank=False)
 	authors = models.CharField(max_length=100, blank=False)
 	publisher = models.CharField(max_length=100, blank=False)
-	year_op = models.DateTimeField(blank=False, verbose_name="year of purchase")
+	year_op = models.DateTimeField(blank=False, verbose_name="year of publication")
 	copies = models.IntegerField(blank=False, verbose_name="available copies")
 	price = models.DecimalField(max_digits=6, decimal_places=2, blank=False)
 	url = models.CharField(max_length=100)
@@ -90,7 +90,7 @@ class Feedback(models.Model):
 		(10,10)
 	)
 	score = models.IntegerField(choices=score_choices)
-	date_time = models.DateTimeField(blank=False, verbose_name="date time of feedback")
+	date_time = models.DateTimeField(auto_now_add=True, blank=False, verbose_name="date time of feedback")
 	short_text = models.CharField(max_length=140)
 	class Meta:
 		unique_together = ("rater", "book")
