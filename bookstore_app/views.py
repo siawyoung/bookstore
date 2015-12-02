@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 from .models import Customer
 # Create your views here.
 
@@ -20,7 +21,8 @@ def user(req, id):
 		user = Customer.objects.get(login_id=id)
 	except Customer.DoesNotExist:
 		raise Http404("User does not exist")
-	return render(req, 'user/show.html', {user: user})
+	truncated_cc_num = user.cc_num[-4:]
+	return render(req, 'user/show.html', {'user': user, 'truncated_cc_num': truncated_cc_num})
 
 # def lol(req):
 #     return HttpResponse("lol")
