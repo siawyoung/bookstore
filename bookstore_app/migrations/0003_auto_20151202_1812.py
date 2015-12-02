@@ -5,8 +5,8 @@ from django.db import migrations, models
 
 def insert_users(apps, schema_editor):
     Customer = apps.get_model("bookstore_app", "Customer")
-    user1 = Customer(login_id="user_1", name="User 1", password="lol", cc_num="12341234", address="Uptown", phone_num="12341234")
-    user2 = Customer(login_id="user_2", name="User 2", password="lol", cc_num="12341234", address="Uptown", phone_num="12341234")
+    user1 = Customer(login_id="john", name="John Appleseed", password="lol", cc_num="1234123412341234", address="Uptown, New York", phone_num="12341234")
+    user2 = Customer(login_id="alice", name="Alice Connor", password="lol", cc_num="4321432143214321", address="Downtown, San Francisco", phone_num="12341234")
     user1.save()
     user2.save()
 
