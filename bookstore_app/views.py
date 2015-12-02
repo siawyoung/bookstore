@@ -41,7 +41,7 @@ class BookView(View):
         """
         Need these variables to inject into the view:
         @book = the book object
-        @feedback = feedback belonging to the book
+        @feedback = feedback belonging to the book, ranked according to usefulness
         @show_feedback_form = Boolean to check if the form should be shown
         @recommendations = book recommendations
         """
@@ -124,6 +124,8 @@ def feedback(req, feedback_id):
     GET /feedback/:feedback_id
     TODO: This is the GET endpoint for individual feedback
     This should check if the user has already rated this feedback
+    @feedback = feedback object itself
+    @rating = user's rating of the feedback, if any
     """
     # feedback = Feedback.objects.get(pk: feedback_id)
     # return render(req, 'feedback/show.html', { 'feedback': feedback })
