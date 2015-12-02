@@ -32,8 +32,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('login_id', models.CharField(max_length=20, serialize=False, primary_key=True)),
                 ('name', models.CharField(max_length=50)),
-                ('password', models.CharField(max_length=16)),
-                ('cc_num', models.CharField(max_length=12, verbose_name=b'credit card number')),
+                ('password', models.CharField(max_length=40)),
+                ('cc_num', models.CharField(max_length=16, verbose_name=b'credit card number')),
                 ('address', models.CharField(max_length=100)),
                 ('phone_num', models.CharField(max_length=10)),
             ],
