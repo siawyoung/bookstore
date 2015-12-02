@@ -11,11 +11,43 @@ def index(req):
 def register(req):
     return render(req, 'user/register.html')
 
-def login(req):
-    return render(req, 'user/login.html')
+class LoginView(View):
+    def get(self, req):
+        return render(req, 'user/login.html')
+    def post(self, req):
+        """
+        TODO: This is the POST endpoint for the login form
+        It should redirect to / if successful
+        or redirect back to login page with errors
+        """
+        pass
 
-def book(req, isbn):
-    return render(req, 'book/show.html')
+class OrderView(View):
+    def get(self, req):
+        """
+        TODO: This is the GET endpoint for the user's cart
+        @orders = localStorage
+        """
+        pass
+    def post(self, req):
+        """
+        TODO: This is the POST endpoint for the user to submit his orders in the cart
+        """
+        pass
+
+class BookView(View):
+    def get(self, req, isbn):
+        return render(req, 'book/show.html')
+    def post(self, req):
+        """
+        TODO: This is the POST endpoint for the store manager to add a new book
+        """
+        pass
+    def patch(self, req):
+        """
+        TODO: This is the PATCH endpoint for the store manager to add more quantity of books
+        """
+        pass
 
 class UserView(View):
     def get(self, req, user_id):
@@ -27,9 +59,51 @@ class UserView(View):
         return render(req, 'user/show.html', {'user': user, 'truncated_cc_num': truncated_cc_num})
 
     def post(self, req):
+        """
+        TODO: This is the POST endpoint for the register form
+        """
         pass
 
+def search(req, query):
+    """
+    GET /books/search?=
+    TODO: This is the GET endpoint for searching books
+    """
+    pass
 
+def create_feedback(req, book_id):
+    """
+    POST /books/:book_id/feedback
+    TODO: This is the POST endpoint for creating a feedback of a book
+    This should check if the user has already bought a book/created a feedback for this book
+    """
+    pass
+
+def feedback(req, feedback_id):
+    """
+    GET /feedback/:feedback_id
+    TODO: This is the GET endpoint for individual feedback
+    This should check if the user has already rated this feedback
+    """
+    pass
+
+def rating(req, feedback_id):
+    """
+    POST /feedback/:feedback_id/ratings
+    TODO: This is the POST endpoint for creating a rating of a feedback
+    """
+    pass
+
+def statistics(req):
+    """
+    ONLY FOR STORE managers
+    GET /statistics
+    TODO: This is the GET endpoint for seeing the store statistics
+    """
+    pass
+
+# def get_book_rec(isbn):
+#     return 
 
 # class DocumentView(Resource):  
   
