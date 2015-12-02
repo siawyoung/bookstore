@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 class Customer(models.Model):
 	login_id = models.CharField(max_length=20, primary_key=True, blank=False)
@@ -8,12 +9,16 @@ class Customer(models.Model):
 	address = models.CharField(max_length=100)
 	phone_num = models.CharField(max_length=10)
 
+class CustomerForm(ModelForm):
+	class Meta:
+		model = Customer
+		fields = ['login_id', 'name', 'password', 'cc_num', 'address', 'phone_num']
+
 class Book(models.Model):
 	isbn = models.CharField(max_length=14, primary_key=True,blank=False)
 	title = models.CharField(max_length=100, blank=False)
 	authors = models.CharField(max_length=100, blank=False)
 	publisher = models.CharField(max_length=100, blank=False)
-	title = models.CharField(max_length=100, blank=False)
 	year_op = models.DateTimeField(blank=False, verbose_name="year of purchase")
 	copies = models.IntegerField(blank=False, verbose_name="available copies")
 	price = models.DecimalField(max_digits=6, decimal_places=2, blank=False)
@@ -25,8 +30,22 @@ class Book(models.Model):
 	keywords = models.CharField(max_length=100) #store all keywords as a tuple
 	subject = models.CharField(max_length=50)
 
+class BookForm(ModelForm):
+	class Meta:
+		model = Book
+		fields = ['isbn',
+		 	'title',
+		 	'authors',
+		 	'publisher',
+		 	'year_op',
+		 	'copies',
+		 	'price',
+		 	'b_format',
+		 	'keywords',
+		 	'subject']
+
 class Order(models.Model):
-	order_id = models.IntegerField(primary_key=True)
+	# order_id = models.IntegerField(primary_key=True)
 	date_time = models.DateTimeField(blank=False, verbose_name="date time of order")
 	customer = models.ForeignKey("Customer")
 	order_status_choices = (
@@ -37,12 +56,22 @@ class Order(models.Model):
 	)
 	status = models.CharField(max_length=2, choices=order_status_choices)
 
+class OrderForm(ModelForm):
+	class Meta:
+		model = Order
+		fields = ['date_time','customer']
+
 class Order_book(models.Model):
 	order = models.ForeignKey(Order)
 	book = models.ForeignKey(Book)
 	copies = models.IntegerField(blank=False, verbose_name="copies ordered")
 	class Meta:
 		unique_together = ('order', 'book')
+
+class OrderBookForm(ModelForm):
+	class Meta:
+		model = Order_book
+		fields = ['order', 'book', 'copies']
 
 class Feedback(models.Model):
 	rater = models.ForeignKey("Customer")

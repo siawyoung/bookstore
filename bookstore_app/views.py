@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Customer
 # Create your views here.
 
 def index(req):
@@ -20,7 +21,6 @@ def book(req, isbn):
 # def lol2(req, id):
 #     response = "Hi %s"
 #     return HttpResponse(response % id)
-
 
 # def index(request):
 #     latest_question_list = Question.objects.order_by('-pub_date')[:5]
