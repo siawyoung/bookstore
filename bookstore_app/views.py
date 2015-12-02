@@ -2,10 +2,8 @@ from django.shortcuts import render
 from django.http import Http404
 from django.views.generic import View
 from .models import Customer
-# Create your views here.
 
 def index(req):
-    # template = loader.get_template('book/index.html')
     return render(req, 'book/index.html')
 
 def register(req):
