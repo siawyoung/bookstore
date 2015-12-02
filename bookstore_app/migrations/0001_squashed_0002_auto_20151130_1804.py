@@ -6,6 +6,8 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
+    replaces = [(b'bookstore_app', '0001_initial'), (b'bookstore_app', '0002_auto_20151130_1804')]
+
     dependencies = [
     ]
 
@@ -50,7 +52,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Order',
             fields=[
-                ('order_id', models.IntegerField(serialize=False, primary_key=True)),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('date_time', models.DateTimeField(verbose_name=b'date time of order')),
                 ('status', models.CharField(max_length=2, choices=[(b'it', b'in transit to customer'), (b'pp', b'processing payment'), (b'dc', b'delivered to customer'), (b'wh', b'in warehouse')])),
                 ('customer', models.ForeignKey(to='bookstore_app.Customer')),
@@ -86,5 +88,5 @@ class Migration(migrations.Migration):
         migrations.AlterUniqueTogether(
             name='feedback',
             unique_together=set([('rater', 'book')]),
-        ),
+        )
     ]
