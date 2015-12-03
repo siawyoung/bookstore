@@ -169,11 +169,6 @@ def create_feedback(req, book_id):
     except:
         error = 'The feedback is invalid. Please type between 1 and 140 characters and provide a rating.'
         return render_book_show(req, book, feedback_form_error=error)
-    """
-    POST /books/:book_id/feedback
-    This should check if the user has already bought a book/created a feedback for this book
-    """
-    pass
 
 def feedback(req, feedback_id):
     """

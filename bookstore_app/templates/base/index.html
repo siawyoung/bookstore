@@ -17,11 +17,11 @@
       <div id="navigation">
         <ul>
           {% if user %}
-            <li>Profile</li>
+            <li><a href="/users/">Profile</a></li>
             <li>Logout</li>
           {% else %}
-            <li>Register</li>
-            <li>Login</li>
+            <li><a href="/register/">Register</a></li>
+            <li><a href="/login/">Login</a></li>
           {% endif %}
         </ul>
       </div>
