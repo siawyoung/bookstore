@@ -16,3 +16,8 @@ def VerifyToken(token):
         return True
     else:
         return False
+
+def DecodeToken(token):
+    decoded_string = base64.b64decode(token)
+    split_string = (" ".join(decoded_string.split(' ')[:-1]), decoded_string.split(' ')[-1])
+    return split_string[0]
