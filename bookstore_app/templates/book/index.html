@@ -2,11 +2,11 @@
 {% load num_range %}
 
 {% block content %}
-
 <h3>All Books</h3>
-<p>This is some good shit. Lorem ipsum man.</p>
+{% if user %}
+<p>Hey {{ user.name }}, check out the latest books!</p>
+{% endif %}
 <div class="books">
-
   {% num_range 10 as some_range %}
   {% for i in some_range %}
   <div class="single-book">
