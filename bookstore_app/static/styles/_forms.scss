@@ -16,3 +16,22 @@
     display: block;
   }
 }
+
+.errors {
+  border: 1px solid $red;
+  margin: 20px 0;
+  padding: 9px 12px;
+  color: $red;
+  border-radius: 5px;
+
+  .custom-message {
+    margin: 0;
+  }
+}
+
+.errorlist {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  list-style-type: none;
+}
