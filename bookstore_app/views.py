@@ -16,9 +16,8 @@ def getUser(req):
         return None
 
 def index(req):
-    # books = Book.objects.all()
     user = getUser(req)
-    books = None
+    books = Book.objects.all()
     return render(req, 'book/index.html', { 'user': user, 'books': books })
 
 class UserView(View):
