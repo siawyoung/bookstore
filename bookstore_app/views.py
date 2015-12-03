@@ -33,8 +33,8 @@ class UserView(View):
         @feedback (all of the user's feedback)
         @ratings (all of the user's ratings and their associated feedback)
         """
-        orders = None
-        feedbacks = None
+        orders = user.order_set.all()
+        feedbacks = user.feedback_set.all()
         ratings = None
 
         return render(req, 'user/show.html', {
