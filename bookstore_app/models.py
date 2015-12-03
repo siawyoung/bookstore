@@ -26,20 +26,6 @@ class Book(models.Model):
 	keywords = models.CharField(max_length=100) #store all keywords as a tuple
 	subject = models.CharField(max_length=50)
 
-class BookForm(ModelForm):
-	class Meta:
-		model = Book
-		fields = ['isbn',
-		 	'title',
-		 	'authors',
-		 	'publisher',
-		 	'year_op',
-		 	'copies',
-		 	'price',
-		 	'b_format',
-		 	'keywords',
-		 	'subject']
-
 class Order(models.Model):
 	# order_id = models.IntegerField(primary_key=True)
 	date_time = models.DateTimeField(blank=False, verbose_name="date time of order")

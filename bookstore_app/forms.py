@@ -21,3 +21,17 @@ class RegisterForm(forms.ModelForm):
             'cc_num': 'Credit Card',
             'phone_num': 'Phone Number'
         }
+
+class BookForm(ModelForm):
+    class Meta:
+        model = Book
+        fields = ['isbn',
+            'title',
+            'authors',
+            'publisher',
+            'year_op',
+            'copies',
+            'price',
+            'b_format',
+            'keywords',
+            'subject']
