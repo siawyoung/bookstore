@@ -13,6 +13,21 @@
 <h4>Phone Number</h4>
 <p>{{ user.phone_num }}</p>
 <h4>My Orders</h4>
+{% if orders %}
+  {% for order in orders %}
+    <div class="group">
+      <a href="/books/{{ order.2.isbn }}"><p>{{ order.2.title }}</p></a>
+      <p>Time of order: {{ order.0.date_time }}</p>
+      <p>Number of copies: {{ order.1.copies }}</p>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>You have no orders.</p>
+{% endif %}
 <h4>My Feedback</h4>
+{% if feedbacks %}
+{% else %}
+<p>You have no feedback.</p>
+{% endif %}
 <h4>Rated Feedback</h4>
 {% endblock %}
