@@ -35,3 +35,13 @@ class BookForm(ModelForm):
             'b_format',
             'keywords',
             'subject']
+
+class OrderForm(ModelForm):
+    class Meta:
+        model = Order
+        fields = ['date_time','customer']
+
+class OrderBookForm(ModelForm):
+    class Meta:
+        model = Order_book
+        fields = ['order', 'book', 'copies']

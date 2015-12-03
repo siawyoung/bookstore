@@ -38,22 +38,12 @@ class Order(models.Model):
 	)
 	status = models.CharField(max_length=2, choices=order_status_choices)
 
-class OrderForm(ModelForm):
-	class Meta:
-		model = Order
-		fields = ['date_time','customer']
-
 class Order_book(models.Model):
 	order = models.ForeignKey(Order)
 	book = models.ForeignKey(Book)
 	copies = models.IntegerField(blank=False, verbose_name="copies ordered")
 	class Meta:
 		unique_together = ('order', 'book')
-
-class OrderBookForm(ModelForm):
-	class Meta:
-		model = Order_book
-		fields = ['order', 'book', 'copies']
 
 class Feedback(models.Model):
 	rater = models.ForeignKey("Customer")
