@@ -4,12 +4,57 @@ from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.views.generic import View
 from .models import Customer, Feedback, Book
 from .forms import LoginForm, RegisterForm
-from .token import IssueToken
+from .token import IssueToken, VerifyToken, DecodeToken
+
+def getUser(req):
+    token = req.COOKIES.get('bookstore_token')
+    if not token:
+        return None
+    if VerifyToken(token):
+        return Customer.objects.get(login_id=DecodeToken(token))
+    else:
+        return None
 
 def index(req):
     # books = Book.objects.all()
+    user = getUser(req)
     books = None
-    return render(req, 'book/index.html', { 'books': books })
+    return render(req, 'book/index.html', { 'user': user, 'books': books })
+
+class UserView(View):
+    def get(self, req):
+        user = getUser(req)
+        if not user:
+            HttpResponseRedirect('/login/')
+        truncated_cc_num = user.cc_num[-4:]
+
+        """
+        Need these variables to inject into the view:
+        @orders (all of user's orders)
+        @feedback (all of the user's feedback)
+        @ratings (all of the user's ratings and their associated feedback)
+        """
+        orders = None
+        feedbacks = None
+        ratings = None
+
+        return render(req, 'user/show.html', {
+            'user': user,
+            'truncated_cc_num': truncated_cc_num,
+            'orders': orders,
+            'feedbacks': feedbacks,
+            'ratings': ratings
+        })
+
+    def post(self, req):
+        form = RegisterForm(req.POST)
+        if form.is_valid():
+            user = form.save()
+            response = HttpResponseRedirect('/')
+            response.set_cookie('bookstore_token', IssueToken(user.login_id))
+            return response
+        else:
+            return render(req, 'user/register.html', { 'form': form })
 
 def register(req):
     return render(req, 'user/register.html', { 'form': RegisterForm() })
@@ -26,17 +71,11 @@ class LoginView(View):
             user = None
         if user:
             response = HttpResponseRedirect('/')
-            response.set_cookie('token', IssueToken(user.login_id))
+            response.set_cookie('bookstore_token', IssueToken(user.login_id))
             return response
         else:
             error = 'The username or password is incorrect.'
             return render(req, 'user/login.html', { 'form': LoginForm(), 'error': error })
-        """
-        TODO: This is the POST endpoint for the login form
-        It should redirect to / if successful
-        or redirect back to login page with errors
-        """
-        # pass
 
 class OrderView(View):
     def get(self, req):
@@ -81,38 +120,6 @@ class BookView(View):
     def patch(self, req):
         """
         TODO: This is the PATCH endpoint for the store manager to add more quantity of books
-        """
-        pass
-
-class UserView(View):
-    def get(self, req, user_id):
-        try:
-            user = Customer.objects.get(login_id=user_id)
-        except Customer.DoesNotExist:
-            raise Http404("User does not exist")
-        truncated_cc_num = user.cc_num[-4:]
-
-        """
-        Need these variables to inject into the view:
-        @orders (all of user's orders)
-        @feedback (all of the user's feedback)
-        @ratings (all of the user's ratings and their associated feedback)
-        """
-        orders = None
-        feedbacks = None
-        ratings = None
-
-        return render(req, 'user/show.html', {
-            'user': user,
-            'truncated_cc_num': truncated_cc_num,
-            'orders': orders,
-            'feedbacks': feedbacks,
-            'ratings': ratings
-        })
-
-    def post(self, req):
-        """
-        TODO: This is the POST endpoint for the register form
         """
         pass
 
