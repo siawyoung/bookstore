@@ -95,22 +95,27 @@ class BookView(View):
     def get(self, req, isbn):
         """
         Need these variables to inject into the view:
-        @book = the book object
         @feedback = feedback belonging to the book, ranked according to usefulness
         @show_feedback_form = Boolean to check if the form should be shown
         @recommendations = book recommendations
         """
-        book = None
-        feedbacks = None
+        try:
+            book = Book.objects.get(isbn=isbn)
+        except:
+            raise Http404('This book does not exist.')
+        feedbacks = book.feedback_set.all() # not sorted yet
         show_feedback_form = None
         recommendations = None
-
+        b_format = "Hardcover" if book.b_format == 'hc' else "Softcover"
         return render(req, 'book/show.html', {
             'book': book,
+            'b_format': b_format,
             'feedbacks': feedbacks,
             'show_feedback_form': show_feedback_form,
             'recommendations': recommendations
         })
+
+class AdminBookView(View):
     def post(self, req):
         """
         TODO: This is the POST endpoint for the store manager to add a new book
