@@ -4,12 +4,33 @@
 <div class="book-show">
   <div class="cover feedback-form">
     <img src="http://placehold.it/700x1000" alt="">
-    <!-- To be displayed only if the user has bought the the book before -->
+
+    {% if show_feedback_form %}
     <p>It looks like you've purchased this book before. Would you like to leave some feedback?</p>
-    <form>
+    <form action="/books/{{ book.isbn }}/feedback/" method="post">
+      {% csrf_token %}
+      <label for="score">Rating</label>
+      <select name="score" id="">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
       <textarea name="feedback" id="feedback-textarea"></textarea>
+      {% if feedback_form_error %}
+        <div class="errors">
+          <p class="custom-message">{{ feedback_form_error }}</p>
+        </div>
+      {% endif %}
       <button type="submit">Submit Feedback</button>
     </form>
+    {% endif %}
   </div>
   <div class="info">
     <div class="overflow">

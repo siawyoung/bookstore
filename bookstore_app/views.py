@@ -2,7 +2,7 @@ import pdb
 from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.views.generic import View
-from .models import Customer, Feedback, Book
+from .models import Customer, Feedback, Book, Order_book
 from .forms import LoginForm, RegisterForm
 from .token import IssueToken, VerifyToken, DecodeToken
 
@@ -103,13 +103,17 @@ class BookView(View):
             book = Book.objects.get(isbn=isbn)
         except:
             raise Http404('This book does not exist.')
-        return render_book_show(req, book)
+        return render_book_show(req, book, user=getUser(req))
 
-def render_book_show(req, book, feedback_form_error=None, quantity_form_error=None):
-    user_feedback = 
+def render_book_show(req, book, user=None, feedback_form_error=None, quantity_form_error=None):
     feedbacks = book.feedback_set.all() # not sorted yet
-    show_feedback_form = None
-    recommendations = None
+    if not user:
+        show_feedback_form = False
+        recommendations = None
+    else:
+        show_feedback_form = check_show_feedback_form(user, book)
+        recommendations = None
+
     b_format = "Hardcover" if book.b_format == 'hc' else "Softcover"
     return render(req, 'book/show.html', {
         'book': book,
@@ -146,9 +150,27 @@ def search(req, query):
     pass
 
 def create_feedback(req, book_id):
+    user = getUser(req)
+    if not user:
+        raise Http403("Forbidden to create feedback")
+    book = Book.objects.get(isbn=book_id)
+    text = req.POST.get('feedback')
+
+    if len(text) < 1 or len(text) > 140:
+        error = 'The feedback is invalid. Please type between 1 and 140 characters and provide a rating.'
+        return render_book_show(req, book, feedback_form_error=error)
+
+    score = req.POST.get('score')
+    feedback = Feedback(rater=user, book=book, short_text=text, score=score)
+    try:
+        feedback.full_clean()
+        feedback.save()
+        return HttpResponseRedirect('/books/' + book.isbn)
+    except:
+        error = 'The feedback is invalid. Please type between 1 and 140 characters and provide a rating.'
+        return render_book_show(req, book, feedback_form_error=error)
     """
     POST /books/:book_id/feedback
-    TODO: This is the POST endpoint for creating a feedback of a book
     This should check if the user has already bought a book/created a feedback for this book
     """
     pass
@@ -181,6 +203,20 @@ def statistics(req):
     # return render(req, 'admin/statistics.html')
     pass
 
+
+def check_show_feedback_form(user, book):
+    user_orders = user.order_set.all()
+    user_order_books = [ Order_book.objects.get(order=o) for o in user_orders ]
+    all_books_ordered_by_user = [ o.book for o in user_order_books ]
+    has_user_ordered_this_book = any(book == b for b in all_books_ordered_by_user)
+    if has_user_ordered_this_book:
+        try:
+            feedback = Feedback.objects.get(rater=user, book=book)
+        except Feedback.DoesNotExist:
+            return True
+        return False
+    else:
+        return False
 
 # class DocumentView(Resource):  
   

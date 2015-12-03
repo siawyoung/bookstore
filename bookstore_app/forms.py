@@ -22,7 +22,7 @@ class RegisterForm(forms.ModelForm):
             'phone_num': 'Phone Number'
         }
 
-class BookForm(ModelForm):
+class BookForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = ['isbn',
@@ -36,12 +36,12 @@ class BookForm(ModelForm):
             'keywords',
             'subject']
 
-class OrderForm(ModelForm):
+class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ['date_time','customer']
 
-class OrderBookForm(ModelForm):
+class OrderBookForm(forms.ModelForm):
     class Meta:
         model = Order_book
         fields = ['order', 'book', 'copies']
