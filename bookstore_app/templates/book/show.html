@@ -39,10 +39,17 @@
     <div class="description">
     </div>
     <h4>Feedback</h4>
-    <p>This is some good feedback man.</p>
-    {% for feedback in feedbacks %}
-    <p>{{ feedback.short_text }}</p>
-    {% endfor %}
+    {% if feedbacks %}
+      {% for feedback in feedbacks %}
+      <div class="feedback">
+        <p>{{ feedback.rater.name }} posted on {{ feedback.date_time }}:</p>
+        <p><b>Rating: {{ feedback.score }}</b></p>
+        <p>{{ feedback.short_text }}</p>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p>There's no feedback for this book yet. Why don't you order it and be the first to leave some?</p>
+    {% endif %}
 
     <h4>Book Recommendations</h4>
     <p>Check these titles out yo.</p>
