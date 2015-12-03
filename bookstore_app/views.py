@@ -103,17 +103,23 @@ class BookView(View):
             book = Book.objects.get(isbn=isbn)
         except:
             raise Http404('This book does not exist.')
-        feedbacks = book.feedback_set.all() # not sorted yet
-        show_feedback_form = None
-        recommendations = None
-        b_format = "Hardcover" if book.b_format == 'hc' else "Softcover"
-        return render(req, 'book/show.html', {
-            'book': book,
-            'b_format': b_format,
-            'feedbacks': feedbacks,
-            'show_feedback_form': show_feedback_form,
-            'recommendations': recommendations
-        })
+        return render_book_show(req, book)
+
+def render_book_show(req, book, feedback_form_error=None, quantity_form_error=None):
+    user_feedback = 
+    feedbacks = book.feedback_set.all() # not sorted yet
+    show_feedback_form = None
+    recommendations = None
+    b_format = "Hardcover" if book.b_format == 'hc' else "Softcover"
+    return render(req, 'book/show.html', {
+        'book': book,
+        'b_format': b_format,
+        'feedbacks': feedbacks,
+        'show_feedback_form': show_feedback_form,
+        'recommendations': recommendations,
+        'feedback_form_error': feedback_form_error,
+        'quantity_form_error': quantity_form_error
+    })
 
 class AdminBookView(View):
     def post(self, req):
