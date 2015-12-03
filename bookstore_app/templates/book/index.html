@@ -7,13 +7,14 @@
 <p>Hey {{ user.name }}, check out the latest books!</p>
 {% endif %}
 <div class="books">
-  {% num_range 10 as some_range %}
-  {% for i in some_range %}
-  <div class="single-book">
-    <img src="http://placehold.it/350x350" alt="">
-    <h4>Some Damn Long and Drawn Out Story: Part {{i}}</h4>
-    <h4 class="price">$19.99</h4>
-  </div>
+  {% for book in books %}
+  <a class="single-book" href="/books/{{ book.isbn }}">
+    <div>
+      <img src="http://placehold.it/350x350" alt="">
+      <h4>{{ book.title }}</h4>
+      <h4 class="price">${{ book.price }}</h4>
+    </div>
+  </a>
   {% endfor %}
 
 </div>
