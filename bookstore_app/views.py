@@ -1,25 +1,42 @@
+import pdb
 from django.shortcuts import render
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.views.generic import View
 from .models import Customer, Feedback, Book
+from .forms import LoginForm, RegisterForm
+from .token import IssueToken
 
 def index(req):
     # books = Book.objects.all()
+    books = None
     return render(req, 'book/index.html', { 'books': books })
 
 def register(req):
-    return render(req, 'user/register.html')
+    return render(req, 'user/register.html', { 'form': RegisterForm() })
 
 class LoginView(View):
     def get(self, req):
-        return render(req, 'user/login.html')
+        return render(req, 'user/login.html', { 'form': LoginForm() })
     def post(self, req):
+        username = req.POST.get('login_id', '')
+        password = req.POST.get('password', '')
+        try:
+            user = Customer.objects.get(login_id=username, password=password)
+        except Customer.DoesNotExist:
+            user = None
+        if user:
+            response = HttpResponseRedirect('/')
+            response.set_cookie('token', IssueToken(user.login_id))
+            return response
+        else:
+            error = 'The username or password is incorrect.'
+            return render(req, 'user/login.html', { 'form': LoginForm(), 'error': error })
         """
         TODO: This is the POST endpoint for the login form
         It should redirect to / if successful
         or redirect back to login page with errors
         """
-        pass
+        # pass
 
 class OrderView(View):
     def get(self, req):
