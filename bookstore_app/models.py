@@ -9,11 +9,6 @@ class Customer(models.Model):
 	address = models.CharField(max_length=100)
 	phone_num = models.CharField(max_length=10)
 
-class CustomerForm(ModelForm):
-	class Meta:
-		model = Customer
-		fields = ['login_id', 'name', 'password', 'cc_num', 'address', 'phone_num']
-
 class Book(models.Model):
 	isbn = models.CharField(max_length=14, primary_key=True,blank=False)
 	title = models.CharField(max_length=100, blank=False)
