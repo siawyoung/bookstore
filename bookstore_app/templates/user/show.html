@@ -26,6 +26,14 @@
 {% endif %}
 <h4>My Feedback</h4>
 {% if feedbacks %}
+  {% for feedback in feedbacks %}
+    <div class="group">
+      <a href="/books/{{ feedback.1.isbn }}"><p>{{ feedback.1.title }}</p></a>
+      <p>Rated on: {{ feedback.0.date_time }}</p>
+      <p>Rating: {{ feedback.0.score }}</p>
+      <p>{{ feedback.0.short_text }}</p>
+    </div>
+  {% endfor %}
 {% else %}
 <p>You have no feedback.</p>
 {% endif %}

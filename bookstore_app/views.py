@@ -36,15 +36,18 @@ class UserView(View):
         orders = user.order_set.all()
         order_books = [ Order_book.objects.get(order=o) for o in orders ]
         books = [ o.book for o in order_books ]
-        all_order_information = zip(orders, order_books, books)
+        orders_information = zip(orders, order_books, books)
+
         feedbacks = user.feedback_set.all()
+        feedbacks_books = [ f.book for f in feedbacks ]
+        feedbacks_information = zip(feedbacks, feedbacks_books)
         ratings = None
 
         return render(req, 'user/show.html', {
             'user': user,
             'truncated_cc_num': truncated_cc_num,
-            'orders': all_order_information,
-            'feedbacks': feedbacks,
+            'orders': orders_information,
+            'feedbacks': feedbacks_information,
             'ratings': ratings
         })
 
