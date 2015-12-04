@@ -19,10 +19,6 @@ class UserView(View):
             HttpResponseRedirect('/login/')
         truncated_cc_num = user.cc_num[-4:]
 
-        """
-        Need these variables to inject into the view:
-        @ratings (all of the user's ratings and their associated feedback)
-        """
         orders = user.order_set.all()
         order_books = [ Order_book.objects.get(order=o) for o in orders ]
         books = [ o.book for o in order_books ]
@@ -31,14 +27,18 @@ class UserView(View):
         feedbacks = user.feedback_set.all()
         feedbacks_books = [ f.book for f in feedbacks ]
         feedbacks_information = zip(feedbacks, feedbacks_books)
-        ratings = None
 
+        ratings = Rating.objects.filter(rater=user)
+        ratees = [ rating.ratee for rating in ratings ]
+        books = [ rating.book for rating in ratings ]
+        ratings_feedbacks = [ Feedback.objects.get(rater=ratee,book=book) for ratee, book in zip(ratees, books) ]
+        rating_info = zip(ratings, ratees, books, ratings_feedbacks)
         return render(req, 'user/show.html', {
             'user': user,
             'truncated_cc_num': truncated_cc_num,
             'orders': orders_information,
             'feedbacks': feedbacks_information,
-            'ratings': ratings
+            'ratings': rating_info
         })
 
     def post(self, req):
@@ -231,6 +231,8 @@ def check_if_rated_before(user, feedback):
     else:
         return 'no'
 
+# def get_feedback():
+#     pass
 # class DocumentView(Resource):  
   
 #     def get(self, request, document_id):  

@@ -29,8 +29,8 @@
   {% for feedback in feedbacks %}
     <div class="group">
       <a href="/books/{{ feedback.1.isbn }}"><p>{{ feedback.1.title }}</p></a>
-      <p>Rated on: {{ feedback.0.date_time }}</p>
-      <p>Rating: {{ feedback.0.score }}</p>
+      <p>Feedback left on: {{ feedback.0.date_time }}</p>
+      <p><b>Rating: {{ feedback.0.score }}</b></p>
       <p>{{ feedback.0.short_text }}</p>
     </div>
   {% endfor %}
@@ -38,4 +38,23 @@
 <p>You have no feedback.</p>
 {% endif %}
 <h4>Rated Feedback</h4>
+{% if ratings %}
+  {% for rating in ratings %}
+    <div class="group">
+      <a href="/books/{{ rating.2.isbn }}"><p>{{ rating.2.title }}</p></a>
+      <p>Feedback left on: {{ rating.3.date_time }} by <b>{{ rating.1.name }}</b></p>
+      <p><b>Rating: {{ rating.3.score }}</b></p>
+      <p>{{ rating.3.short_text }}</p>
+      {% if rating.0.score == 0 %}
+        <p>You rated this feedback as useless.</p>
+      {% elif rating.0.score == 1 %}
+        <p>You rated this feedback as useful.</p>
+      {% else %}
+        <p>You rated this feedback as very useful.</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+{% else %}
+<p>You have no rated feedback.</p>
+{% endif %}
 {% endblock %}
