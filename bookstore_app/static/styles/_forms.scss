@@ -36,3 +36,10 @@
   display: inline-block;
   list-style-type: none;
 }
+
+.rating-form {
+  input[type="submit"] {
+    padding: 4px 12px;
+  }
+  
+}
