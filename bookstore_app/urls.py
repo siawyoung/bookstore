@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view()),
     url(r'^books/([a-zA-Z0-9-]+)/$', BookView.as_view()),
     url(r'^books/([a-zA-Z0-9-]+)/feedback/$', views.create_feedback, name='create_feedback'),
+    url(r'^feedback/([a-zA-Z0-9-]+)/ratings/$', views.rating, name='rating'),
     url(r'^books/$', AdminBookView.as_view()),
     url(r'^users/$', UserView.as_view()),
     # url(r'^admin/book/new', views.admin_books, name='admin_books'),
