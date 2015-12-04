@@ -1,19 +1,11 @@
 import pdb
+from django.core.exceptions import ValidationError
 from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.views.generic import View
-from .models import Customer, Feedback, Book, Order_book
+from .models import Customer, Feedback, Book, Order_book, Rating
 from .forms import LoginForm, RegisterForm
 from .token import IssueToken, VerifyToken, DecodeToken
-
-def getUser(req):
-    token = req.COOKIES.get('bookstore_token')
-    if not token:
-        return None
-    if VerifyToken(token):
-        return Customer.objects.get(login_id=DecodeToken(token))
-    else:
-        return None
 
 def index(req):
     user = getUser(req)
@@ -29,8 +21,6 @@ class UserView(View):
 
         """
         Need these variables to inject into the view:
-        @orders (all of user's orders)
-        @feedback (all of the user's feedback)
         @ratings (all of the user's ratings and their associated feedback)
         """
         orders = user.order_set.all()
@@ -101,8 +91,6 @@ class BookView(View):
     def get(self, req, isbn):
         """
         Need these variables to inject into the view:
-        @feedback = feedback belonging to the book, ranked according to usefulness
-        @show_feedback_form = Boolean to check if the form should be shown
         @recommendations = book recommendations
         """
         try:
@@ -114,17 +102,20 @@ class BookView(View):
 def render_book_show(req, book, user=None, feedback_form_error=None, quantity_form_error=None):
     feedbacks = book.feedback_set.all() # not sorted yet
     if not user:
+        show_ratings = [ 'self' for feedback in feedbacks ]
         show_feedback_form = False
         recommendations = None
     else:
+        show_ratings = [ check_if_rated_before(user, feedback) for feedback in feedbacks ]
         show_feedback_form = check_show_feedback_form(user, book)
         recommendations = None
 
+    feedback_and_ratings = zip(feedbacks, show_ratings)
     b_format = "Hardcover" if book.b_format == 'hc' else "Softcover"
     return render(req, 'book/show.html', {
         'book': book,
         'b_format': b_format,
-        'feedbacks': feedbacks,
+        'feedbacks': feedback_and_ratings,
         'show_feedback_form': show_feedback_form,
         'recommendations': recommendations,
         'feedback_form_error': feedback_form_error,
@@ -176,24 +167,17 @@ def create_feedback(req, book_id):
         error = 'The feedback is invalid. Please type between 1 and 140 characters and provide a rating.'
         return render_book_show(req, book, feedback_form_error=error)
 
-def feedback(req, feedback_id):
-    """
-    GET /feedback/:feedback_id
-    TODO: This is the GET endpoint for individual feedback
-    This should check if the user has already rated this feedback
-    @feedback = feedback object itself
-    @rating = user's rating of the feedback, if any
-    """
-    # feedback = Feedback.objects.get(pk: feedback_id)
-    # return render(req, 'feedback/show.html', { 'feedback': feedback })
-    pass
-
 def rating(req, feedback_id):
-    """
-    POST /feedback/:feedback_id/ratings
-    TODO: This is the POST endpoint for creating a rating of a feedback
-    """
-    pass
+    user = getUser(req)
+    feedback = Feedback.objects.get(pk=feedback_id)
+    score = req.POST.get('score')
+    rating = Rating(score=score, rater=user, ratee=feedback.rater, book=feedback.book)
+    try:
+        rating.full_clean()
+        rating.save()
+        return HttpResponseRedirect('/books/' + feedback.book.isbn)
+    except Exception as e:
+        raise Http404('The rating is invalid')
 
 def statistics(req):
     """
@@ -204,6 +188,19 @@ def statistics(req):
     # return render(req, 'admin/statistics.html')
     pass
 
+
+########################
+# HELPER FUNCTIONS
+########################
+
+def getUser(req):
+    token = req.COOKIES.get('bookstore_token')
+    if not token:
+        return None
+    if VerifyToken(token):
+        return Customer.objects.get(login_id=DecodeToken(token))
+    else:
+        return None
 
 def check_show_feedback_form(user, book):
     user_orders = user.order_set.all()
@@ -218,6 +215,21 @@ def check_show_feedback_form(user, book):
         return False
     else:
         return False
+
+def get_rating(user, feedback):
+    return Rating.objects.get(rater=feedback.rater,book=feedback.book,ratee=user)
+
+def check_if_rated_before(user, feedback):
+    if feedback.rater == user:
+        return 'self'
+    try:
+        rating = Rating.objects.get(rater=user,book=feedback.book,ratee=feedback.rater)
+    except Rating.DoesNotExist:
+        return 'no'
+    if rating:
+        return rating
+    else:
+        return 'no'
 
 # class DocumentView(Resource):  
   

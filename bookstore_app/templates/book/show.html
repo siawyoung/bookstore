@@ -63,9 +63,30 @@
     {% if feedbacks %}
       {% for feedback in feedbacks %}
       <div class="feedback">
-        <p>{{ feedback.rater.name }} posted on {{ feedback.date_time }}:</p>
-        <p><b>Rating: {{ feedback.score }}</b></p>
-        <p>{{ feedback.short_text }}</p>
+        <p>{{ feedback.0.rater.name }} posted on {{ feedback.0.date_time }}:</p>
+        <p><b>Rating: {{ feedback.0.score }}</b></p>
+        <p>{{ feedback.0.short_text }}</p>
+        {% if feedback.1 == 'no' %}
+          <p>Was the feedback useful to you?</p>
+          <form class="rating-form" action="/feedback/{{ feedback.0.pk }}/ratings/" method="post">
+            {% csrf_token %}
+            <select name="score">
+              <option value="0">Useless</option>
+              <option value="1" selected>Useful</option>
+              <option value="2">Very Useful</option>
+            </select>
+            <button type="submit">Rate</button>
+          </form>
+        {% elif feedback.1 == 'self' %}
+        {% else %}
+          {% if feedback.1.score == 0 %}
+            <p>You rated this feedback as useless.</p>
+          {% elif feedback.1.score == 1 %}
+            <p>You rated this feedback as useful.</p>
+          {% else %}
+            <p>You rated this feedback as very useful.</p>
+          {% endif %}
+        {% endif %}
       </div>
       {% endfor %}
     {% else %}
