@@ -4,7 +4,7 @@ from django.views.generic import View
 from .models import Customer, Feedback, Book
 
 def index(req):
-    # books = Book.objects.all()
+    books = Book.objects.all()
     return render(req, 'book/index.html', { 'books': books })
 
 def register(req):

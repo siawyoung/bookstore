@@ -126,7 +126,7 @@ PIPELINE_COMPILERS = (
   'pipeline.compilers.sass.SASSCompiler',
 )
 
-PIPELINE_SASS_BINARY = 'C:\Ruby22-x64\bin\sass.bat'
+# PIPELINE_SASS_BINARY = 'C:\Ruby22-x64\bin\sass.bat'
 
 PIPELINE_CSS = {
     'main': {
