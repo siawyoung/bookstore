@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 class Customer(models.Model):
 	login_id = models.CharField(max_length=20, primary_key=True, blank=False)
@@ -7,6 +8,8 @@ class Customer(models.Model):
 	cc_num = models.CharField(max_length=16, verbose_name="credit card number")
 	address = models.CharField(max_length=100)
 	phone_num = models.CharField(max_length=10)
+	def __str__(self):
+		return self.login_id + " " + self.name
 
 class Book(models.Model):
 	isbn = models.CharField(max_length=14, primary_key=True,blank=False)
@@ -24,6 +27,8 @@ class Book(models.Model):
 	b_format = models.CharField(max_length=2, choices=book_format_choices)
 	keywords = models.CharField(max_length=100) #store all keywords as a tuple
 	subject = models.CharField(max_length=50)
+	def __str__(self):
+		return self.title + " " + self.isbn
 
 class Order(models.Model):
 	# order_id = models.IntegerField(primary_key=True)
@@ -63,15 +68,19 @@ class Feedback(models.Model):
 	score = models.IntegerField(choices=score_choices)
 	date_time = models.DateTimeField(auto_now_add=True, blank=False, verbose_name="date time of feedback")
 	short_text = models.CharField(max_length=140)
+	def usefulness(self):
+		return Rating.objects.filter(ratee=self.rater,book=self.book).aggregate(models.Avg('score'))
 	class Meta:
 		unique_together = ("rater", "book")
+	def __str__(self):
+		return str(self.book) + " " + str(self.rater)
 
 class Rating(models.Model):
 	def clean(self):
 		if (self.rater_id == self.ratee_id):
 			raise ValidationError('rater_id == ratee_id')
-		if (len(Feedback.objects.filter(rater=self.ratee, book=self.book)) > 0):
-			raise ValidationError('feedback not found')
+		if (len(Feedback.objects.filter(rater=self.ratee, book=self.book)) > 1):
+			raise ValidationError('Feedback not found')
 	class Meta:
 		unique_together = ("book", "rater", "ratee")
 	score_choices = (
@@ -83,3 +92,5 @@ class Rating(models.Model):
 	rater = models.ForeignKey(Customer, related_name='rater')
 	ratee = models.ForeignKey(Customer, related_name='ratee')
 	book = models.ForeignKey(Book)
+	def __str__(self):
+		return str(self.score) + " " + str(self.book) + " " + str(self.rater) + " " + str(self.ratee)

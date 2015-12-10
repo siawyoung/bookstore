@@ -137,6 +137,7 @@ class BookView(View):
 
 def render_book_show(req, book, user=None, feedback_form_error=None, quantity_form_error=None):
     feedbacks = book.feedback_set.all() # not sorted yet
+    feedbacks = sorted(feedbacks, key=lambda feedback: feedback.usefulness(), reverse=True)
     if not user:
         show_ratings = [ 'self' for feedback in feedbacks ]
         show_feedback_form = False
@@ -298,20 +299,6 @@ def check_if_rated_before(user, feedback):
 #         else:  
 #             url = reverse('document', args=[document.id])  
   
-
-
-
-# def lol(req):
-#     return HttpResponse("lol")
-
-# def lol2(req, id):
-#     response = "Hi %s"
-#     return HttpResponse(response % id)
-
-# def index(request):
-#     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-#     context = {'latest_question_list': latest_question_list}
-#     return render(request, 'polls/index.html', context)
 
 # def detail(request, question_id):
 #     try:
