@@ -38,8 +38,9 @@
 }
 
 .rating-form {
-  input[type="submit"] {
-    padding: 4px 12px;
+  button[type="submit"] {
+    padding: 3px 10px;
+    font-size: 0.8rem;
   }
   
 }
