@@ -1,9 +1,10 @@
 import pdb
+import datetime
 from django.core.exceptions import ValidationError
 from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.views.generic import View
-from .models import Customer, Feedback, Book, Order_book, Rating
+from .models import Customer, Feedback, Book, Order_book, Rating, Order
 from .forms import LoginForm, RegisterForm
 from .token import IssueToken, VerifyToken, DecodeToken
 
@@ -16,13 +17,13 @@ class UserView(View):
     def get(self, req):
         user = getUser(req)
         if not user:
-            HttpResponseRedirect('/login/')
+            return HttpResponseRedirect('/login/')
         truncated_cc_num = user.cc_num[-4:]
 
-        orders = user.order_set.all()
-        order_books = [ Order_book.objects.get(order=o) for o in orders ]
-        books = [ o.book for o in order_books ]
-        orders_information = zip(orders, order_books, books)
+        orders = user.order_set.exclude(status='ns')
+        order_books = [ Order_book.objects.filter(order=o).all() for o in orders ]
+        books = [ [ (o, o.book) for o in ob ] for ob in order_books ]
+        orders_information = reversed(zip(orders, books))
 
         feedbacks = user.feedback_set.all()
         feedbacks_books = [ f.book for f in feedbacks ]
@@ -72,16 +73,51 @@ class LoginView(View):
             error = 'The username or password is incorrect.'
             return render(req, 'user/login.html', { 'form': LoginForm(), 'error': error })
 
+def add_to_cart(req, isbn):
+    # pdb.set_trace()
+    copies_requested = int(req.POST.get("quantity"))
+    user = getUser(req)
+    book = Book.objects.get(isbn=isbn)
+    try:
+        cart = user.order_set.filter(status='ns')[0]
+    except:
+        cart = Order(customer=user,status='ns', date_time=datetime.datetime.now())
+        cart.save()
+    try:
+        order_book = cart.order_book_set.get(book=book)
+    except:
+        order_book = Order_book(order=cart, book=book, copies=0)
+        order_book.save()
+
+    order_book.copies += copies_requested
+    book.copies -= copies_requested
+    order_book.save()
+    book.save()
+    # copies_requested = int(req.POST.get("quantity"))
+    # book.copies -= int(copies_requested)
+    # book.save()
+    # response = HttpResponseRedirect('/orders/')
+    return HttpResponseRedirect('/orders/')
+
 class OrderView(View):
     def get(self, req):
-        """
-        TODO: This is the GET endpoint for the user's cart
-        @orders = localStorage
-        """
-        orders = None
-        # return render(req, 'order/index.html', { 'orders': orders })
-        pass
+        user = getUser(req)
+        # if not user:
+        #     HttpResponseRedirect('/login/')
+
+        orders = user.order_set.filter(status='ns')
+        order_books = [ Order_book.objects.filter(order=o).all() for o in orders ]
+        order_books = [ item for sublist in order_books for item in sublist ]
+        books = [ o.book for o in order_books ]
+        orders_information = zip(order_books, books)
+        sub_price = [ x[0].copies * x[1].price for x in orders_information ]
+        orders_information = zip(order_books, books, sub_price)
+        grand_total = sum(sub_price)
+        return render(req, 'order/index.html', { 'user': user, 'orders': orders_information, 'grand_total': grand_total })
     def post(self, req):
+        user = getUser(req)
+        orders = user.order_set.filter(status='ns').update(status='dc', date_time=datetime.datetime.now())
+        return HttpResponseRedirect('/users/')
         """
         TODO: This is the POST endpoint for the user to submit the orders that are in the cart
         """
@@ -122,17 +158,18 @@ def render_book_show(req, book, user=None, feedback_form_error=None, quantity_fo
         'quantity_form_error': quantity_form_error
     })
 
-class AdminBookView(View):
-    def post(self, req):
-        """
-        TODO: This is the POST endpoint for the store manager to add a new book
-        """
-        pass
-    def patch(self, req):
-        """
-        TODO: This is the PATCH endpoint for the store manager to add more quantity of books
-        """
-        pass
+# USING DJANGO ADMIN INSTEAD
+# class AdminBookView(View):
+#     def post(self, req):
+#         """
+#         TODO: This is the POST endpoint for the store manager to add a new book
+#         """
+#         pass
+#     def patch(self, req):
+#         """
+#         TODO: This is the PATCH endpoint for the store manager to add more quantity of books
+#         """
+#         pass
 
 def search(req, query):
     """
@@ -203,8 +240,9 @@ def getUser(req):
         return None
 
 def check_show_feedback_form(user, book):
-    user_orders = user.order_set.all()
-    user_order_books = [ Order_book.objects.get(order=o) for o in user_orders ]
+    user_orders = user.order_set.exclude(status='ns')
+    user_order_books = [ Order_book.objects.filter(order=o) for o in user_orders ]
+    user_order_books = [item for sublist in user_order_books for item in sublist]
     all_books_ordered_by_user = [ o.book for o in user_order_books ]
     has_user_ordered_this_book = any(book == b for b in all_books_ordered_by_user)
     if has_user_ordered_this_book:

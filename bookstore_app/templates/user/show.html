@@ -16,9 +16,11 @@
 {% if orders %}
   {% for order in orders %}
     <div class="group">
-      <a href="/books/{{ order.2.isbn }}"><p>{{ order.2.title }}</p></a>
-      <p>Time of order: {{ order.0.date_time }}</p>
-      <p>Number of copies: {{ order.1.copies }}</p>
+      <h4>Order placed on {{ order.0.date_time }}</h4>
+      {% for order_book in order.1 %}
+        <a href="/books/{{ order_book.1.isbn }}"><p>{{ order_book.1.title }}</p></a>
+        <p>Number of copies: {{ order_book.0.copies }}</p>
+      {% endfor %}
     </div>
   {% endfor %}
 {% else %}

@@ -1,0 +1,26 @@
+.orders {
+  @include clearfix;
+  margin-top: 35px;
+
+  .grand-total {
+    margin: 30px 0;
+  }
+}
+
+.single-order {
+  @include clearfix;
+  margin: 20px 0;
+  .image {
+    @include span(1 of 4);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .order-info {
+    @include span(3 of 4);
+    @include last;
+  }
+
+}
