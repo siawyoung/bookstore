@@ -1,5 +1,6 @@
-import pdb
+import pdb, re
 from django.core.exceptions import ValidationError
+from django.db.models import Q
 from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.views.generic import View
@@ -135,15 +136,124 @@ class AdminBookView(View):
         """
         pass
 
-def search(req, query):
+def search(req):
     """
     GET /books/search?=
     TODO: This is the GET endpoint for searching books
     This will use the same template as GET / which is 'book/index'
 
     @books = books that fulfil the search query
+    
+    Queries are performed on the following fields:
+        publisher: pub
+        author: auth
+        ISBN: isbn
+        subject: subj
+    Valid operators:
+        and: __AND__ 
+        or: __OR__ 
+    A query string is of the form 
+        q = a=A 
+        or 
+        q1__OP__q2
+
+    Ordering is enforced using braces {}
     """
-    books = None
+    def basic_query(field, value):
+        query = None
+        if field == "pub":
+            query = Q(publisher__contains=value)
+        elif field == "auth":
+            query = Q(authors__contains=value)
+        elif field == "subj":
+            query = Q(subject__contains=value)
+        elif field == "title":
+            query = Q(title__contains=value)
+        else:
+            raise ValidationError("You search wrong")
+        return query
+
+    def get_query(string):
+        query_match = re_query_capture.match(string).groupdict()
+        if not query_match:
+            print string
+            raise ValueError("Invalid string for performing query")
+            return None
+        return basic_query(query_match["field"], query_match["value"])
+
+    def combine_queries(query1, query2, operator):
+        if query1 is None:
+            if query2 is None:
+                raise ValueError("Attempted to combine two null queries")
+                return None
+            return query2
+        elif query2 is None:
+            return query1
+        if operator == OR:
+            return query1 | query2
+        elif operator == AND:
+            return query1 & query2
+        else:
+            raise ValueError("Invalid operator to combine queries")
+
+    def match_braces(string):
+        starting_brace = string.find("{") 
+        ending_brace = string.rfind("}")
+        if starting_brace < 0 or ending_brace < 0:
+            print string
+            raise ValueError("Starting and ending braces not found")
+            return None
+        return (starting_brace, ending_brace)
+
+    def left_to_right_collapse(string):
+        if match_braces(string) != None:
+            print string
+            raise ValueError("Invalid query to perform left to right collapse")
+            return None
+
+        first_op_found = op_query_capture.search(string)
+        if not first_op_found:
+            return get_query(string)
+        else:
+            final_query = string[:first_op_found.start()]
+            while first_op_found:
+                first_op = first_op_found.group(0)
+                string = string[first_op_found.end():]
+                next_op_found = op_query_capture.search(string)
+                if not next_op_found:
+                    next_query = string
+                else:
+                    next_query = string[:next_op_found.start()]
+                final_query = combine_queries(final_query, next_query, first_op)
+                first_op_found = next_op_found
+            return final_query
+
+        while first_op_found != None
+            first_op = first_op_found.group(0)
+            query1 = string[:first_op_found.start()]
+            if not final_query:
+                final_query = combine_queries(final_query, query1, None)
+            else:
+                final_query = combine_queries(final_query, query1, first_op)
+
+            if not next_op_found:
+                query2 = string[first_op.end():]
+            else:
+                next_op = next_op_found.group(0)
+            first_op_found = next_op_found
+
+    AND = "__AND__"
+    OR = "__OR__"
+    OP_CAPTURE = r"__AND__|__OR__"
+    QUERY_CAPTURE = r"(?P<field>[a-z]+)=(?P<value>.+)"
+    re_query_capture = re.compile(QUERY_CAPTURE)
+    op_query_capture = re.compile(OP_CAPTURE)
+
+    search_query = req.GET.get("query")
+    query_count = 0
+
+    print re_query_capture.search(search_query).groupdict()
+    # print re_query_capture.split(search_query)
     return render(req, 'book/index.html', { 'books': books })
     pass
 

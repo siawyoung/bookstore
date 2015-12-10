@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^feedback/([a-zA-Z0-9-]+)/ratings/$', views.rating, name='rating'),
     url(r'^books/$', AdminBookView.as_view()),
     url(r'^users/$', UserView.as_view()),
+    url(r'^search/+$', views.search),
     # url(r'^admin/book/new', views.admin_books, name='admin_books'),
     # url(r'^admin/book/update', views.admin_update, name='admin_update')
 ]
