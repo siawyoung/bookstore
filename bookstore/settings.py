@@ -141,5 +141,11 @@ PIPELINE_JS = {
           'javascripts/app.js',
         ),
         'output_filename': 'main.js',
+    },
+    'jquery': {
+        'source_filenames': (
+          'javascripts/jquery.min.js',
+        ),
+        'output_filename': 'jquery.min.js',
     }
 }
