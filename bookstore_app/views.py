@@ -234,7 +234,7 @@ def search(req):
             raise ValueError("Invalid operator to combine queries")
 
     def match_braces(string):
-        starting_brace = string.find("{") 
+        starting_brace = string.find("{")
         ending_brace = string.rfind("}")
         if starting_brace < 0 or ending_brace < 0:
             print string
@@ -265,7 +265,7 @@ def search(req):
                 first_op_found = next_op_found
             return final_query
 
-        while first_op_found != None
+        while first_op_found != None:
             first_op = first_op_found.group(0)
             query1 = string[:first_op_found.start()]
             if not final_query:
