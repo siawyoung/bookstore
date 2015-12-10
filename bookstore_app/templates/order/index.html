@@ -1,0 +1,32 @@
+{% extends 'base/index.html' %}
+
+{% block content %}
+<h3>Your Orders</h3>
+
+<div class="orders">
+
+  {% if orders %}
+    {% for order in orders %}
+    <div class="single-order">
+      <div class="image">
+        <img src="http://placehold.it/350x350" alt="">
+      </div>
+      <div class="order-info">
+        <h4><a href="/books/{{ order.1.isbn }}">{{ order.1.title }}</a></h4>
+        <h5>${{ order.1.price }}</h5>
+        <h5>Order quantity: {{ order.0.copies }}</h5>
+        <h4>Total price: ${{ order.2 }}</h4>
+      </div>
+    </div>
+    {% endfor %}
+    <h3 class="grand-total">Grand total: ${{ grand_total }}</h3>
+    <form action="/orders/" method="post">
+      {% csrf_token %}
+      <button type="submit">Place order</button>
+    </form>
+  {% else %}
+  <p>You don't have anything in your cart at the moment.</p>
+  {% endif %}
+</div>
+
+{% endblock %}

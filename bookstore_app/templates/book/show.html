@@ -47,10 +47,11 @@
         <h3>${{ book.price }}</h3>
         <p><b>{{ b_format }}</b></p>
         <p>{{ book.copies }} copies left</p>
-        <form>
+        <form action="/books/{{ book.isbn }}/orders/" method="post">
+          {% csrf_token %}
           <div class="form-group">
             <label>Quantity</label>
-            <input type="number" />
+            <input name="quantity" type="number" />
           </div>
           <button type="submit">Add to Cart</button>
         </form>

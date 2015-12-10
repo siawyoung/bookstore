@@ -38,7 +38,8 @@ class Order(models.Model):
 		('it', 'in transit to customer'),
 		('pp', 'processing payment'),
 		('dc', 'delivered to customer'),
-		('wh', 'in warehouse')
+		('wh', 'in warehouse'),
+		('ns', 'not submitted')
 	)
 	status = models.CharField(max_length=2, choices=order_status_choices)
 
