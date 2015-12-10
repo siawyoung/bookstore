@@ -7,6 +7,10 @@
   @include gallery(4 of 16);
   margin-bottom: gutter(16);
 
+  p {
+    margin: 0;
+  }
+
   img {
     width: 100%;
   }
