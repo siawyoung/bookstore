@@ -61,12 +61,14 @@
     <div class="description">
     </div>
     <h4>Feedback</h4>
+    <p>Number of feedback to show:</p>
+    <input type="text" id="feedback-number-show">
     {% if feedbacks %}
       {% for feedback in feedbacks %}
       <div class="feedback">
         <p>{{ feedback.0.rater.name }} posted on {{ feedback.0.date_time }}:</p>
-        <p><b>Rating: {{ feedback.0.score }}</b></p>
-        <p>{{ feedback.0.short_text }}</p>
+        <p><b>Rating: {{ feedback.0.score }}</b>  Usefulness: {{ feedback.0.usefulness.score__avg }}</p>
+        <p class="body">{{ feedback.0.short_text }}</p>
         {% if feedback.1 == 'no' %}
           <p>Was the feedback useful to you?</p>
           <form class="rating-form" action="/feedback/{{ feedback.0.pk }}/ratings/" method="post">
