@@ -6,6 +6,11 @@
 {% if user %}
 <p>Hey {{ user.name }}, check out the latest books!</p>
 {% endif %}
+<form class="search-form" action="/search/" method="get">
+  <input name="query" type="text">
+  <div class="spacer"></div>
+  <button type="submit">Search</button>
+</form>
 <div class="books">
   {% for book in books %}
   <a class="single-book" href="/books/{{ book.isbn }}">
