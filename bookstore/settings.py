@@ -134,3 +134,12 @@ PIPELINE_CSS = {
         'output_filename': 'main.css'
     }
 }
+
+PIPELINE_JS = {
+    'main': {
+        'source_filenames': (
+          'javascripts/app.js',
+        ),
+        'output_filename': 'main.js',
+    }
+}
