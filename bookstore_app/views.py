@@ -200,13 +200,13 @@ def search(req):
     def basic_query(field, value):
         query = None
         if field == "pub":
-            query = Q(publisher__contains=value)
+            query = Q(publisher__icontains=value)
         elif field == "auth":
-            query = Q(authors__contains=value)
+            query = Q(authors__icontains=value)
         elif field == "subj":
-            query = Q(subject__contains=value)
+            query = Q(subject__icontains=value)
         elif field == "title":
-            query = Q(title__contains=value)
+            query = Q(title__icontains=value)
         else:
             raise ValidationError("You search wrong")
         return query
@@ -238,8 +238,6 @@ def search(req):
         starting_brace = string.find("{") 
         ending_brace = string.rfind("}")
         if starting_brace < 0 or ending_brace < 0:
-            print string
-            raise ValueError("Starting and ending braces not found")
             return None
         return (starting_brace, ending_brace)
 
@@ -253,32 +251,19 @@ def search(req):
         if not first_op_found:
             return get_query(string)
         else:
-            final_query = string[:first_op_found.start()]
+            final_query_string = string[:first_op_found.start()]
+            final_query = get_query(final_query_string)
             while first_op_found:
                 first_op = first_op_found.group(0)
-                string = string[first_op_found.end():]
-                next_op_found = op_query_capture.search(string)
+                next_op_found = op_query_capture.search(string, first_op_found.end())
                 if not next_op_found:
-                    next_query = string
+                    next_query_string = string[first_op_found.end():]
                 else:
-                    next_query = string[:next_op_found.start()]
+                    next_query_string = string[first_op_found.end():next_op_found.start()]
+                next_query = get_query(next_query_string)
                 final_query = combine_queries(final_query, next_query, first_op)
                 first_op_found = next_op_found
             return final_query
-
-        while first_op_found != None
-            first_op = first_op_found.group(0)
-            query1 = string[:first_op_found.start()]
-            if not final_query:
-                final_query = combine_queries(final_query, query1, None)
-            else:
-                final_query = combine_queries(final_query, query1, first_op)
-
-            if not next_op_found:
-                query2 = string[first_op.end():]
-            else:
-                next_op = next_op_found.group(0)
-            first_op_found = next_op_found
 
     AND = "__AND__"
     OR = "__OR__"
@@ -286,12 +271,8 @@ def search(req):
     QUERY_CAPTURE = r"(?P<field>[a-z]+)=(?P<value>.+)"
     re_query_capture = re.compile(QUERY_CAPTURE)
     op_query_capture = re.compile(OP_CAPTURE)
-
     search_query = req.GET.get("query")
-    query_count = 0
-
-    print re_query_capture.search(search_query).groupdict()
-    # print re_query_capture.split(search_query)
+    books = Book.objects.filter(left_to_right_collapse(search_query))
     return render(req, 'book/index.html', { 'books': books })
     pass
 
