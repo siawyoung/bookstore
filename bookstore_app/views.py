@@ -101,6 +101,7 @@ class BookView(View):
 
 def render_book_show(req, book, user=None, feedback_form_error=None, quantity_form_error=None):
     feedbacks = book.feedback_set.all() # not sorted yet
+    feedbacks = sorted(feedbacks, key=lambda feedback: feedback.usefulness())
     if not user:
         show_ratings = [ 'self' for feedback in feedbacks ]
         show_feedback_form = False
