@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <title>Amazebooks</title>
   {% stylesheet 'main' %}
+  {% javascript 'main' %}
 </head>
 <body>
 
@@ -16,12 +17,12 @@
       </div>
       <div id="navigation">
         <ul>
-          {% if user %}
-            <li><a href="/users/">Profile</a></li>
-            <li>Logout</li>
-          {% else %}
+          {% if not user.name %}
             <li><a href="/register/">Register</a></li>
             <li><a href="/login/">Login</a></li>
+          {% else %}
+            <li><a href="/users/">Profile</a></li>
+            <li><a id="logout-link" href="/">Logout</a></li>
           {% endif %}
         </ul>
       </div>
@@ -39,5 +40,8 @@
     </div>
   </footer>
 
+  <script>
+    attachLogOutHandler();
+  </script>
 </body>
 </html>
