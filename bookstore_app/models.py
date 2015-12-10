@@ -67,6 +67,8 @@ class Feedback(models.Model):
 	score = models.IntegerField(choices=score_choices)
 	date_time = models.DateTimeField(auto_now_add=True, blank=False, verbose_name="date time of feedback")
 	short_text = models.CharField(max_length=140)
+	def usefulness(self):
+		return Rating.objects.filter(ratee=self.rater,book=self.book).aggregate(models.Avg('score'))
 	class Meta:
 		unique_together = ("rater", "book")
 	def __str__(self):
@@ -90,4 +92,4 @@ class Rating(models.Model):
 	ratee = models.ForeignKey(Customer, related_name='ratee')
 	book = models.ForeignKey(Book)
 	def __str__(self):
-		return str(self.book) + " " + str(self.rater) + " " + str(self.ratee)
+		return str(self.score) + " " + str(self.book) + " " + str(self.rater) + " " + str(self.ratee)
