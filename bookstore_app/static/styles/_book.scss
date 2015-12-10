@@ -14,6 +14,9 @@
   h4 {
     margin: 10px 0 0 0;
   }
+
+  text-decoration: none;
+  color: inherit;
 }
 
 .book-show {
@@ -61,6 +64,14 @@
   .title, .price {
     p {
       margin: 0;
+    }
+  }
+
+  .feedback {
+    margin: 25px 0;
+    p {
+      margin: 0;
+      padding: 0;
     }
   }
 }
