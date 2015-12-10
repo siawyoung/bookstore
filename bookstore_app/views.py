@@ -74,7 +74,6 @@ class LoginView(View):
             return render(req, 'user/login.html', { 'form': LoginForm(), 'error': error })
 
 def add_to_cart(req, isbn):
-    # pdb.set_trace()
     copies_requested = int(req.POST.get("quantity"))
     user = getUser(req)
     book = Book.objects.get(isbn=isbn)

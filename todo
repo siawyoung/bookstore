@@ -1,6 +1,3 @@
-IMPLEMENT LOGOUT
-- delete the 'bookstore_token' cookie and redirect to index
-CART LOGIC
-SORT FEEDBACK USEFULNESS
+RECOMMENDATIONS
 SEARCH
-ADMIN PANEL
+ADMIN PANEL - left with statistics page
