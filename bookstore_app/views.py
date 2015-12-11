@@ -143,12 +143,22 @@ def render_book_show(req, book, user=None, feedback_form_error=None, quantity_fo
     if not user:
         show_ratings = [ 'self' for feedback in feedbacks ]
         show_feedback_form = False
-        recommendations = None
     else:
         show_ratings = [ check_if_rated_before(user, feedback) for feedback in feedbacks ]
         show_feedback_form = check_show_feedback_form(user, book)
+    
+    relevant_orders = book.order_book_set.all()
+    if len(relevant_orders) <= 0:
         recommendations = None
-
+    else:
+        order_query = Q(order=relevant_orders[0].order)
+        for order_book in relevant_orders[1:]:
+            order_query = order_query | Q(order=order_book.order)
+        relevant_order_books = Order_book.objects.filter(order_query).distinct()
+        book_query = Q(isbn=relevant_order_books[0].book.isbn)
+        for order_book in relevant_order_books[1:]:
+            book_query = book_query | Q(isbn=order_book.book.isbn)
+        recommendations = Book.objects.filter(book_query).distinct().exclude(isbn=book.isbn)
     feedback_and_ratings = zip(feedbacks, show_ratings)
     b_format = "Hardcover" if book.b_format == 'hc' else "Softcover"
     return render(req, 'book/show.html', {
@@ -236,30 +246,7 @@ def search(req):
         else:
             raise ValueError("Invalid operator to combine queries")
 
-    def match_braces(string):
-        starting_brace_count = 0 
-        ending_brace_count = 0
-        starting_brace = None
-        ending_brace = None
-        for i in range(len(string)):
-            if string[i] == "{":
-                starting_brace_count += 1
-                if starting_brace is None:
-                    starting_brace = i
-            if string[i] == "}":
-                ending_brace_count += 1
-            if starting_brace_count == ending_brace_count and starting_brace_count > 0:
-                ending_brace = i
-                break
-        if starting_brace == None and ending_brace == None:
-            return None
-        return (starting_brace, ending_brace)
-
     def disjunct_collapse(string):
-        if match_braces(string) != None:
-            print string
-            raise ValueError("Invalid query to perform left to right collapse")
-            return None
         first_or_found = or_capture.search(string)
         if not first_or_found:
             return get_query(string)
