@@ -10,10 +10,6 @@ from .models import Customer, Feedback, Book, Order_book, Rating, Order
 from .forms import LoginForm, RegisterForm
 from .token import IssueToken, VerifyToken, DecodeToken
 
-def statistics(req):
-    pdb.set_trace()
-    return render(req, 'admin/statistics.html')
-
 def index(req):
     user = getUser(req)
     books = Book.objects.all()
@@ -80,7 +76,6 @@ class LoginView(View):
             return render(req, 'user/login.html', { 'form': LoginForm(), 'error': error })
 
 def add_to_cart(req, isbn):
-    # pdb.set_trace()
     copies_requested = int(req.POST.get("quantity"))
     user = getUser(req)
     book = Book.objects.get(isbn=isbn)
@@ -150,7 +145,7 @@ def render_book_show(req, book, user=None, feedback_form_error=None, quantity_fo
     else:
         show_ratings = [ check_if_rated_before(user, feedback) for feedback in feedbacks ]
         show_feedback_form = check_show_feedback_form(user, book)
-    
+
     relevant_orders = book.order_book_set.all()
     if len(relevant_orders) <= 0:
         recommendations = None
@@ -163,10 +158,7 @@ def render_book_show(req, book, user=None, feedback_form_error=None, quantity_fo
         for order_book in relevant_order_books[1:]:
             book_query = book_query | Q(isbn=order_book.book.isbn)
         recommendations = Book.objects.filter(book_query).distinct().exclude(isbn=book.isbn)
-<<<<<<< HEAD
-=======
     print recommendations
->>>>>>> 791ec535f3c19e6b1d35777946b22caa7c8e9f7c
     feedback_and_ratings = zip(feedbacks, show_ratings)
     b_format = "Hardcover" if book.b_format == 'hc' else "Softcover"
     return render(req, 'book/show.html', {
@@ -199,18 +191,18 @@ def search(req):
     This will use the same template as GET / which is 'book/index'
 
     @books = books that fulfil the search query
-    
+
     Queries are performed on the following fields:
         publisher: pub
         author: auth
         ISBN: isbn
         subject: subj
     Valid operators:
-        and: __AND__ 
-        or: __OR__ 
-    A query string is of the form 
-        q = a=A 
-        or 
+        and: __AND__
+        or: __OR__
+    A query string is of the form
+        q = a=A
+        or
         q1__OP__q2
 
     Ordering is enforced using braces {}
@@ -376,40 +368,3 @@ def check_if_rated_before(user, feedback):
         return rating
     else:
         return 'no'
-
-# def get_feedback():
-#     pass
-# class DocumentView(Resource):  
-  
-#     def get(self, request, document_id):  
-#         if identity.is_new(document_id):  
-#             form = DocumentForm()  
-#         else:  
-#             document = get_object_or_404(Document, pk=document_id)  
-#             form = DocumentForm(document.get_values())  
-  
-#         model = { 'form': form, 'index_url': reverse('index') }  
-#         return render_to_response('form.html', model)  
-  
-#     def post(self, request, document_id):  
-#         if identity.is_new(document_id):  
-#             document = Document()  
-#         else:  
-#             document = get_object_or_404(Document, pk=document_id)  
-  
-#         document.set_values(request.POST)  
-#         document.save()  
-  
-#         form = DocumentForm(document.get_values())  
-#         if form.is_valid():  
-#             url = reverse('success', args=[document.id])  
-#         else:  
-#             url = reverse('document', args=[document.id])  
-  
-
-# def detail(request, question_id):
-#     try:
-#         question = Question.objects.get(pk=question_id)
-#     except Question.DoesNotExist:
-#         raise Http404("Question does not exist")
-#     return render(request, 'polls/detail.html', {'question': question})

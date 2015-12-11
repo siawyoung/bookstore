@@ -12,36 +12,67 @@
 
   <h5>{{ orders|length }} orders were placed.</h5>
 
-  <h4>Most Popular Books</h4>
+  <div class="tabs">
 
-  {% for book, number in most_popular_books %}
-  <div class="single-order">
-    <div class="image">
-      <img src="http://placehold.it/350x350" alt="">
-    </div>
-    <div class="order-info">
-      <h4><a href="/books/{{ book.isbn }}"></a>{{ book.title }}</h4>
-      <h5>${{ book.price }}</h5>
-      <h5>Order quantity: {{ number }}</h5>
-    </div>
-  </div>
-  {% endfor %}
 
-  <h4>Most Popular Authors</h4>
-  {% for author, number in most_popular_authors %}
-  <div class="single-item">
-    <h4>{{ author }}</h4>
-    <h5>Total number of books sold: {{ number }}</h5>
+    <input type="radio" name="tabs" id="tab1" checked >
+    <label for="tab1">Books</label>
+
+    <input type="radio" name="tabs" id="tab2">
+    <label for="tab2">Authors</label>
+
+    <input type="radio" name="tabs" id="tab3">
+    <label for="tab3">Publishers</label>
+
+    <div class="tab-content" id="tab-content1">
+      <h4>Most Popular Books</h4>
+
+      <span>Show only the top: </span>
+      <input type="text" id="most-popular-book-filter">
+
+      {% for book, number in most_popular_books %}
+      <div class="single-order most-popular-book">
+        <div class="image">
+          <img src="http://placehold.it/350x350" alt="">
+        </div>
+        <div class="order-info">
+          <h4><a href="/books/{{ book.isbn }}"></a>{{ book.title }}</h4>
+          <h5>${{ book.price }}</h5>
+          <h5>Order quantity: {{ number }}</h5>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="tab-content" id="tab-content2">
+      <h4>Most Popular Authors</h4>
+
+      <span>Show only the top: </span>
+      <input type="text" id="most-popular-author-filter">
+
+      {% for author, number in most_popular_authors %}
+      <div class="single-item most-popular-author">
+        <h4>{{ author }}</h4>
+        <h5>Total number of books sold: {{ number }}</h5>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="tab-content" id="tab-content3">
+      <h4>Most Popular Publishers</h4>
+
+      <span>Show only the top: </span>
+      <input type="text" id="most-popular-publisher-filter">
+
+      {% for publisher, number in most_popular_publishers %}
+      <div class="single-item most-popular-publisher">
+        <h4>{{ publisher }}</h4>
+        <h5>Total number of books sold: {{ number }}</h5>
+      </div>
+      {% endfor %}
+    </div>
+
   </div>
-  {% endfor %}
-  
-  <h4>Most Popular Publishers</h4>
-  {% for publisher, number in most_popular_publishers %}
-  <div class="single-item">
-    <h4>{{ publisher }}</h4>
-    <h5>Total number of books sold: {{ number }}</h5>
-  </div>
-  {% endfor %}
 
 </div>
 
