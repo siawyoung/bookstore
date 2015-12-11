@@ -9,7 +9,7 @@
     {% for order in orders %}
     <div class="single-order">
       <div class="image">
-        <img src="http://placehold.it/350x350" alt="">
+        <img src="{{ order.1.image }}" alt="">
       </div>
       <div class="order-info">
         <h4><a href="/books/{{ order.1.isbn }}">{{ order.1.title }}</a></h4>

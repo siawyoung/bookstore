@@ -2,7 +2,7 @@
 
 // Typesetting variables. Edit these!
 $baseFontSize: 20; // in pixels. This would result in 22px on desktop
-$baseLineHeight: 1.5; // how large the line height is as a multiple of font size
+$baseLineHeight: 2; // how large the line height is as a multiple of font size
 $leading: $baseLineHeight * 1rem;
 
 // Rate of growth for headings
@@ -27,7 +27,7 @@ html {
 /* Copy & Lists */
 p {
   line-height: $leading;
-  margin-top: $leading;
+  margin-top: $leading * 0.5;
   margin-bottom: 0;
 }
 ul, ol {
@@ -51,7 +51,7 @@ blockquote {
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: sans-serif;
-  margin-top: $leading;
+  margin-top: $leading * 0.5;
   margin-bottom: 0;
   line-height: $leading;
 }

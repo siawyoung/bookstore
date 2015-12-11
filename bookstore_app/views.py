@@ -103,8 +103,8 @@ def add_to_cart(req, isbn):
 class OrderView(View):
     def get(self, req):
         user = getUser(req)
-        # if not user:
-        #     HttpResponseRedirect('/login/')
+        if not user:
+            return HttpResponseRedirect('/login/')
 
         orders = user.order_set.filter(status='ns')
         order_books = [ Order_book.objects.filter(order=o).all() for o in orders ]
@@ -162,6 +162,7 @@ def render_book_show(req, book, user=None, feedback_form_error=None, quantity_fo
     feedback_and_ratings = zip(feedbacks, show_ratings)
     b_format = "Hardcover" if book.b_format == 'hc' else "Softcover"
     return render(req, 'book/show.html', {
+        'user': user,
         'book': book,
         'b_format': b_format,
         'feedbacks': feedback_and_ratings,
@@ -170,19 +171,6 @@ def render_book_show(req, book, user=None, feedback_form_error=None, quantity_fo
         'feedback_form_error': feedback_form_error,
         'quantity_form_error': quantity_form_error
     })
-
-# USING DJANGO ADMIN INSTEAD
-# class AdminBookView(View):
-#     def post(self, req):
-#         """
-#         TODO: This is the POST endpoint for the store manager to add a new book
-#         """
-#         pass
-#     def patch(self, req):
-#         """
-#         TODO: This is the PATCH endpoint for the store manager to add more quantity of books
-#         """
-#         pass
 
 def search(req):
     """
@@ -207,6 +195,7 @@ def search(req):
 
     Ordering is enforced using braces {}
     """
+    user = getUser(req)
     def basic_query(field, value):
         query = None
         value = ".*[[:<:]]"+value+"[[:>:]].*"
@@ -280,8 +269,7 @@ def search(req):
     or_capture = re.compile(OR)
     search_query = req.GET.get("query")
     books = Book.objects.filter(conjunct_collapse(search_query))
-    return render(req, 'book/index.html', { 'books': books })
-    pass
+    return render(req, 'book/index.html', { 'user': user, 'books': books })
 
 def create_feedback(req, book_id):
     user = getUser(req)
@@ -315,16 +303,6 @@ def rating(req, feedback_id):
         return HttpResponseRedirect('/books/' + feedback.book.isbn)
     except Exception as e:
         raise Http404('The rating is invalid')
-
-def statistics(req):
-    """
-    ONLY FOR STORE managers
-    GET /statistics
-    TODO: This is the GET endpoint for seeing the store statistics
-    """
-    # return render(req, 'admin/statistics.html')
-    pass
-
 
 ########################
 # HELPER FUNCTIONS

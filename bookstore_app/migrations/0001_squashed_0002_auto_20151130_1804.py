@@ -25,6 +25,7 @@ class Migration(migrations.Migration):
                 ('b_format', models.CharField(max_length=2, choices=[(b'hc', b'hardcover'), (b'sc', b'softcover')])),
                 ('keywords', models.CharField(max_length=100)),
                 ('subject', models.CharField(max_length=50)),
+                ('url', models.CharField(default=None, max_length=200))
             ],
         ),
         migrations.CreateModel(

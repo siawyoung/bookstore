@@ -33,10 +33,10 @@
       {% for book, number in most_popular_books %}
       <div class="single-order most-popular-book">
         <div class="image">
-          <img src="http://placehold.it/350x350" alt="">
+          <img src="{{ book.image }}" alt="">
         </div>
         <div class="order-info">
-          <h4><a href="/books/{{ book.isbn }}"></a>{{ book.title }}</h4>
+          <h4><a href="/books/{{ book.isbn }}">{{ book.title }}</a></h4>
           <h5>${{ book.price }}</h5>
           <h5>Order quantity: {{ number }}</h5>
         </div>
