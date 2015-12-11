@@ -47,6 +47,8 @@ class Order(models.Model):
 		('ns', 'not submitted')
 	)
 	status = models.CharField(max_length=2, choices=order_status_choices)
+	def __str__(self):
+		return str(self.id)
 
 class Order_book(models.Model):
 	order = models.ForeignKey(Order)
@@ -54,6 +56,8 @@ class Order_book(models.Model):
 	copies = models.IntegerField(blank=False, verbose_name="copies ordered")
 	class Meta:
 		unique_together = ('order', 'book')
+	def __str__(self):
+		return str(self.order.id) + " " + str(self.book)
 
 class Feedback(models.Model):
 	rater = models.ForeignKey("Customer")
