@@ -1,62 +1,66 @@
 {% extends 'base/index.html' %}
 
 {% block content %}
-<h3>My Amazebooks Account</h3>
-<h4>Full Name</h4>
-<p>{{ user.name }}</p>
-<h4>Username</h4>
-<p>{{ user.login_id }}</p>
-<h4>Credit Card Number</h4>
-<p>Your registered credit card ends with: {{ truncated_cc_num }}</p>
-<h4>Address</h4>
-<p>{{ user.address }}</p>
-<h4>Phone Number</h4>
-<p>{{ user.phone_num }}</p>
-<h4>My Orders</h4>
-{% if orders %}
-  {% for order in orders %}
-    <div class="group">
-      <h4>Order placed on {{ order.0.date_time }}</h4>
-      {% for order_book in order.1 %}
-        <a href="/books/{{ order_book.1.isbn }}"><p>{{ order_book.1.title }}</p></a>
-        <p>Number of copies: {{ order_book.0.copies }}</p>
-      {% endfor %}
-    </div>
-  {% endfor %}
-{% else %}
-  <p>You have no orders.</p>
-{% endif %}
-<h4>My Feedback</h4>
-{% if feedbacks %}
-  {% for feedback in feedbacks %}
-    <div class="group">
-      <a href="/books/{{ feedback.1.isbn }}"><p>{{ feedback.1.title }}</p></a>
-      <p>Feedback left on: {{ feedback.0.date_time }}</p>
-      <p><b>Rating: {{ feedback.0.score }}</b></p>
-      <p>{{ feedback.0.short_text }}</p>
-    </div>
-  {% endfor %}
-{% else %}
-<p>You have no feedback.</p>
-{% endif %}
-<h4>Rated Feedback</h4>
-{% if ratings %}
-  {% for rating in ratings %}
-    <div class="group">
-      <a href="/books/{{ rating.2.isbn }}"><p>{{ rating.2.title }}</p></a>
-      <p>Feedback left on: {{ rating.3.date_time }} by <b>{{ rating.1.name }}</b></p>
-      <p><b>Rating: {{ rating.3.score }}</b></p>
-      <p>{{ rating.3.short_text }}</p>
-      {% if rating.0.score == 0 %}
-        <p>You rated this feedback as useless.</p>
-      {% elif rating.0.score == 1 %}
-        <p>You rated this feedback as useful.</p>
-      {% else %}
-        <p>You rated this feedback as very useful.</p>
-      {% endif %}
-    </div>
-  {% endfor %}
-{% else %}
-<p>You have no rated feedback.</p>
-{% endif %}
+<div class="user-profile">
+
+  <h3>My Amazebooks Account</h3>
+  <h4>Full Name</h4>
+  <p>{{ user.name }}</p>
+  <h4>Username</h4>
+  <p>{{ user.login_id }}</p>
+  <h4>Credit Card Number</h4>
+  <p>Your registered credit card ends with: {{ truncated_cc_num }}</p>
+  <h4>Address</h4>
+  <p>{{ user.address }}</p>
+  <h4>Phone Number</h4>
+  <p>{{ user.phone_num }}</p>
+  <h4>My Orders</h4>
+  {% if orders %}
+    {% for order in orders reversed %}
+      <div class="group">
+        <h4>Order placed on {{ order.0.date_time }}</h4>
+        {% for order_book in order.1 %}
+          <a href="/books/{{ order_book.1.isbn }}"><p>{{ order_book.1.title }}</p></a>
+          <p>Number of copies: {{ order_book.0.copies }}</p>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>You have no orders.</p>
+  {% endif %}
+  <h4>My Feedback</h4>
+  {% if feedbacks %}
+    {% for feedback in feedbacks %}
+      <div class="group">
+        <a href="/books/{{ feedback.1.isbn }}"><p>{{ feedback.1.title }}</p></a>
+        <p>Feedback left on: {{ feedback.0.date_time }}</p>
+        <p><b>Rating: {{ feedback.0.score }}</b></p>
+        <p>{{ feedback.0.short_text }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+  <p>You have no feedback.</p>
+  {% endif %}
+  <h4>Rated Feedback</h4>
+  {% if ratings %}
+    {% for rating in ratings %}
+      <div class="group">
+        <a href="/books/{{ rating.2.isbn }}"><p>{{ rating.2.title }}</p></a>
+        <p>Feedback left on: {{ rating.3.date_time }} by <b>{{ rating.1.name }}</b></p>
+        <p><b>Rating: {{ rating.3.score }}</b></p>
+        <p>{{ rating.3.short_text }}</p>
+        {% if rating.0.score == 0 %}
+          <p>You rated this feedback as useless.</p>
+        {% elif rating.0.score == 1 %}
+          <p>You rated this feedback as useful.</p>
+        {% else %}
+          <p>You rated this feedback as very useful.</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% else %}
+  <p>You have no rated feedback.</p>
+  {% endif %}
+
+</div>
 {% endblock %}

@@ -39,7 +39,7 @@
         <p><b>ISBN: </b>{{ book.isbn }}</p>
         <p><b>Authors: </b>{{ book.authors }}</p>
         <p><b>Publisher: </b>{{ book.publisher }}</p>
-        <p><b>Year of Publication: </b>{{ book.year_op }}</p>
+        <p><b>Year of Publication: </b>{{ book.year_op.year }}</p>
         <p><b>Subject: </b>{{ book.subject }}</p>
         <p><b>Keywords: </b>{{ book.keywords }}</p>
       </div>
@@ -97,7 +97,25 @@
     {% endif %}
 
     <h4>Book Recommendations</h4>
-    <p>Check these titles out yo.</p>
+    {% if recommendations %}
+      <div class="recommendations">
+        {% for book in recommendations %}
+          <a class="single-book" href="/books/{{ book.isbn }}" data-year="{{ book.year_op.year }}" data-rating="{{ book.rating.score__avg }}">
+            <div>
+              <div class="grid-book-image">
+                <img src="{{ book.image }}" alt="">
+              </div>
+              <h5>{{ book.title }}</h5>
+              <h5>{{ book.year_op.year }}</h5>
+              <h5 class="price">${{ book.price }}</h5>
+              <p>Average rating: {{ book.rating.score__avg }}</p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>There are no recommendations that we can offer.</p>
+    {% endif %}
 
   </div>
 </div>

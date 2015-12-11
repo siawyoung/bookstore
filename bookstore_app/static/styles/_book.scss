@@ -94,3 +94,28 @@
     }
   }
 }
+
+.recommendations {
+  @include clearfix;
+
+  .single-book .grid-book-image {
+    height: 350px;
+  }
+
+  .single-book {
+    h5 {
+      line-height: 1.3rem;
+      margin: 0 0 6px 0;
+    }
+
+    .price {
+      float: none;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
+}
