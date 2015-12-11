@@ -1,0 +1,48 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+
+{% load pipeline %}
+{% stylesheet 'main' %}
+{% javascript 'jquery' %}
+{% javascript 'main' %}
+
+<div class="statistics view-container">
+  <h3>Statistics ({{ last_30_date }} to {{ today_date }})</h3>
+
+  <h5>{{ orders|length }} orders were placed.</h5>
+
+  <h4>Most Popular Books</h4>
+
+  {% for book, number in most_popular_books %}
+  <div class="single-order">
+    <div class="image">
+      <img src="http://placehold.it/350x350" alt="">
+    </div>
+    <div class="order-info">
+      <h4><a href="/books/{{ book.isbn }}"></a>{{ book.title }}</h4>
+      <h5>${{ book.price }}</h5>
+      <h5>Order quantity: {{ number }}</h5>
+    </div>
+  </div>
+  {% endfor %}
+
+  <h4>Most Popular Authors</h4>
+  {% for author, number in most_popular_authors %}
+  <div class="single-item">
+    <h4>{{ author }}</h4>
+    <h5>Total number of books sold: {{ number }}</h5>
+  </div>
+  {% endfor %}
+  
+  <h4>Most Popular Publishers</h4>
+  {% for publisher, number in most_popular_publishers %}
+  <div class="single-item">
+    <h4>{{ publisher }}</h4>
+    <h5>Total number of books sold: {{ number }}</h5>
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}

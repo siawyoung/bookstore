@@ -10,6 +10,10 @@ from .models import Customer, Feedback, Book, Order_book, Rating, Order
 from .forms import LoginForm, RegisterForm
 from .token import IssueToken, VerifyToken, DecodeToken
 
+def statistics(req):
+    pdb.set_trace()
+    return render(req, 'admin/statistics.html')
+
 def index(req):
     user = getUser(req)
     books = Book.objects.all()

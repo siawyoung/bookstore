@@ -36,14 +36,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
+    'django.contrib.admin.apps.SimpleAdminConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pipeline',
-    'bookstore_app'
+    'bookstore_app',
+    'adminplus'
 )
 
 MIDDLEWARE_CLASSES = (
