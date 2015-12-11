@@ -199,25 +199,27 @@ def search(req):
     """
     def basic_query(field, value):
         query = None
+        value = ".*[[:<:]]"+value+"[[:>:]].*"
         if field == "pub":
-            query = Q(publisher__icontains=value)
+            query = Q(publisher__iregex=value)
         elif field == "auth":
-            query = Q(authors__icontains=value)
+            query = Q(authors__iregex=value)
         elif field == "subj":
-            query = Q(subject__icontains=value)
+            query = Q(subject__iregex=value)
         elif field == "title":
-            query = Q(title__icontains=value)
+            query = Q(title__iregex=value)
         else:
             raise ValidationError("You search wrong")
         return query
 
     def get_query(string):
-        query_match = re_query_capture.match(string).groupdict()
+        query_match = re_query_capture.match(string)
         if not query_match:
             print string
             raise ValueError("Invalid string for performing query")
             return None
-        return basic_query(query_match["field"], query_match["value"])
+        query_dict = query_match.groupdict()
+        return basic_query(query_dict["field"], query_dict["value"])
 
     def combine_queries(query1, query2, operator):
         if query1 is None:
@@ -235,44 +237,62 @@ def search(req):
             raise ValueError("Invalid operator to combine queries")
 
     def match_braces(string):
-        starting_brace = string.find("{") 
-        ending_brace = string.rfind("}")
-        if starting_brace < 0 or ending_brace < 0:
+        starting_brace_count = 0 
+        ending_brace_count = 0
+        starting_brace = None
+        ending_brace = None
+        for i in range(len(string)):
+            if string[i] == "{":
+                starting_brace_count += 1
+                if starting_brace is None:
+                    starting_brace = i
+            if string[i] == "}":
+                ending_brace_count += 1
+            if starting_brace_count == ending_brace_count and starting_brace_count > 0:
+                ending_brace = i
+                break
+        if starting_brace == None and ending_brace == None:
             return None
         return (starting_brace, ending_brace)
 
-    def left_to_right_collapse(string):
+    def disjunct_collapse(string):
         if match_braces(string) != None:
             print string
             raise ValueError("Invalid query to perform left to right collapse")
             return None
-
-        first_op_found = op_query_capture.search(string)
-        if not first_op_found:
+        first_or_found = or_capture.search(string)
+        if not first_or_found:
             return get_query(string)
         else:
-            final_query_string = string[:first_op_found.start()]
+            final_query_string = string[:first_or_found.start()]
             final_query = get_query(final_query_string)
-            while first_op_found:
-                first_op = first_op_found.group(0)
-                next_op_found = op_query_capture.search(string, first_op_found.end())
-                if not next_op_found:
-                    next_query_string = string[first_op_found.end():]
+            while first_or_found:
+                first_or = first_or_found.group(0)
+                next_or_found = or_capture.search(string, first_or_found.end())
+                if not next_or_found:
+                    next_query_string = string[first_or_found.end():]
                 else:
-                    next_query_string = string[first_op_found.end():next_op_found.start()]
+                    next_query_string = string[first_or_found.end():next_or_found.start()]
                 next_query = get_query(next_query_string)
-                final_query = combine_queries(final_query, next_query, first_op)
-                first_op_found = next_op_found
+                final_query = combine_queries(final_query, next_query, first_or)
+                first_or_found = next_or_found
             return final_query
+
+    def conjunct_collapse(string):
+        disjuncts = map(disjunct_collapse, string.split(AND))
+        final_query = None
+        for disjunct in disjuncts:
+            final_query = combine_queries(disjunct, final_query, AND)
+        return final_query
 
     AND = "__AND__"
     OR = "__OR__"
-    OP_CAPTURE = r"__AND__|__OR__"
     QUERY_CAPTURE = r"(?P<field>[a-z]+)=(?P<value>.+)"
+    PREVIOUS_QUERY_CAPTURE = r"q(?P<index>[0-9]+)"
     re_query_capture = re.compile(QUERY_CAPTURE)
-    op_query_capture = re.compile(OP_CAPTURE)
+    or_capture = re.compile(OR)
     search_query = req.GET.get("query")
-    books = Book.objects.filter(left_to_right_collapse(search_query))
+    books = Book.objects.filter(conjunct_collapse(search_query))
     return render(req, 'book/index.html', { 'books': books })
     pass
 
