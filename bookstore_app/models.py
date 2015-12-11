@@ -29,6 +29,11 @@ class Book(models.Model):
 	subject = models.CharField(max_length=50)
 	def __str__(self):
 		return self.title + " " + self.isbn
+	def rating(self):
+		if len(self.feedback_set.all()) == 0:
+			return { 'score__avg': 0 }
+		return self.feedback_set.aggregate(models.Avg('score'))
+		# return Feedback.objects.filter(book=self.book).aggregate(models.Avg('score'))
 
 class Order(models.Model):
 	# order_id = models.IntegerField(primary_key=True)

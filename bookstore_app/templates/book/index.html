@@ -11,13 +11,25 @@
   <div class="spacer"></div>
   <button type="submit">Search</button>
 </form>
+<div class="sort">
+  <label>Sort by:</label>
+  <select name="sort-dropdown" id="sort-dropdown">
+    <option disabled selected>Select an option</option>
+    <option value="year-a">Year (oldest first)</option>
+    <option value="year-d">Year (most recent first)</option>
+    <option value="score-a">Average Score (lowest first)</option>
+    <option value="score-d">Average Score (highest first)</option>
+  </select>
+</div>
 <div class="books">
   {% for book in books %}
-  <a class="single-book" href="/books/{{ book.isbn }}">
+  <a class="single-book" href="/books/{{ book.isbn }}" data-year="{{ book.year_op.year }}" data-rating="{{ book.rating.score__avg }}">
     <div>
       <img src="http://placehold.it/350x350" alt="">
       <h4>{{ book.title }}</h4>
       <h4 class="price">${{ book.price }}</h4>
+      <p>Released in: {{ book.year_op.year }}</p>
+      <p>Average rating: {{ book.rating.score__avg }}</p>
     </div>
   </a>
   {% endfor %}
