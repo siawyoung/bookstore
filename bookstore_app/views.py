@@ -101,6 +101,10 @@ class LoginView(View):
 def add_to_cart(req, isbn):
     copies_requested = int(req.POST.get("quantity"))
     user = getUser(req)
+
+    if not user:
+        return HttpResponseRedirect('/login/')
+
     book = Book.objects.get(isbn=isbn)
 
     ##########
@@ -167,6 +171,9 @@ class OrderView(View):
 
     def post(self, req):
         user = getUser(req)
+
+        if not user:
+            return HttpResponseRedirect('/login/')
 
         ##########
         # MIGHT BE USEFUL FOR REPORT
@@ -347,8 +354,10 @@ def search(req):
 
 def create_feedback(req, book_id):
     user = getUser(req)
+
     if not user:
-        raise Http403("Forbidden to create feedback")
+        return HttpResponseRedirect('/login/')
+
     book = Book.objects.get(isbn=book_id)
     text = req.POST.get('feedback')
 
