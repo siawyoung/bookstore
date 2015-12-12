@@ -64,6 +64,7 @@ class Feedback(models.Model):
 	rater = models.ForeignKey("Customer")
 	book = models.ForeignKey("Book")
 	score_choices = (
+		(0,0),
 		(1,1),
 		(2,2),
 		(3,3),

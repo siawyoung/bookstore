@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
             name='Feedback',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('score', models.IntegerField(choices=[(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (10, 10)])),
+                ('score', models.IntegerField(choices=[(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (10, 10)])),
                 ('date_time', models.DateTimeField(verbose_name=b'date time of feedback')),
                 ('short_text', models.CharField(max_length=140)),
                 ('book', models.ForeignKey(to='bookstore_app.Book')),
