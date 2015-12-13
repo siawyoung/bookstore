@@ -1,0 +1,68 @@
+Front page
+----------
+Get all books
+
+SELECT `bookstore_app_book`.`isbn`,
+       `bookstore_app_book`.`title`,
+       `bookstore_app_book`.`authors`,
+       `bookstore_app_book`.`publisher`,
+       `bookstore_app_book`.`year_op`,
+       `bookstore_app_book`.`copies`,
+       `bookstore_app_book`.`price`,
+       `bookstore_app_book`.`url`,
+       `bookstore_app_book`.`b_format`,
+       `bookstore_app_book`.`keywords`,
+       `bookstore_app_book`.`subject`
+FROM `bookstore_app_book` LIMIT 21
+
+Book page
+---------
+
+Get book with isbn number ISBN
+SELECT `bookstore_app_book`.`isbn`,
+       `bookstore_app_book`.`title`,
+       `bookstore_app_book`.`authors`,
+       `bookstore_app_book`.`publisher`,
+       `bookstore_app_book`.`year_op`,
+       `bookstore_app_book`.`copies`,
+       `bookstore_app_book`.`price`,
+       `bookstore_app_book`.`url`,
+       `bookstore_app_book`.`b_format`,
+       `bookstore_app_book`.`keywords`,
+       `bookstore_app_book`.`subject`
+FROM `bookstore_app_book`
+SELECT `bookstore_app_book`.`isbn`,
+       `bookstore_app_book`.`title`,
+       `bookstore_app_book`.`authors`,
+       `bookstore_app_book`.`publisher`,
+       `bookstore_app_book`.`year_op`,
+       `bookstore_app_book`.`copies`,
+       `bookstore_app_book`.`price`,
+       `bookstore_app_book`.`url`,
+       `bookstore_app_book`.`b_format`,
+       `bookstore_app_book`.`keywords`,
+       `bookstore_app_book`.`subject`
+FROM `bookstore_app_book`
+WHERE `bookstore_app_book`.`isbn` = ISBN
+
+Get all feedback
+-------
+SELECT `bookstore_app_feedback`.`id`,
+       `bookstore_app_feedback`.`rater_id`,
+       `bookstore_app_feedback`.`book_id`,
+       `bookstore_app_feedback`.`score`,
+       `bookstore_app_feedback`.`date_time`,
+       `bookstore_app_feedback`.`short_text`
+FROM `bookstore_app_feedback`
+WHERE `bookstore_app_feedback`.`book_id` = '978-0060555665'
+
+Get feedback usefulness for book with isbn ISBN and feedback giver login_id
+------
+SELECT AVG(`bookstore_app_rating`.`score`) AS `score__avg`
+FROM `bookstore_app_rating`
+WHERE (`bookstore_app_rating`.`ratee_id` = login_id
+       AND `bookstore_app_rating`.`book_id` = ISBN)
+
+Check user's rating of book
+------
+

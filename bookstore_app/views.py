@@ -159,10 +159,6 @@ def render_book_show(req, book, user=None, feedback_form_error=None, quantity_fo
         for order_book in relevant_order_books[1:]:
             book_query = book_query | Q(isbn=order_book.book.isbn)
         recommendations = Book.objects.filter(book_query).distinct().exclude(isbn=book.isbn)
-<<<<<<< HEAD
-=======
-    print recommendations
->>>>>>> 791ec535f3c19e6b1d35777946b22caa7c8e9f7c
     feedback_and_ratings = zip(feedbacks, show_ratings)
     b_format = "Hardcover" if book.b_format == 'hc' else "Softcover"
     return render(req, 'book/show.html', {
