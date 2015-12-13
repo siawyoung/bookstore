@@ -22,20 +22,32 @@ class UserView(View):
             return HttpResponseRedirect('/login/')
         truncated_cc_num = user.cc_num[-4:]
 
+        ##########
+        # MIGHT BE USEFUL FOR REPORT
+        ##########
+        # to populate the user profile, we need:
+
+        # find all orders by this user, excluding those not submitted
         orders = user.order_set.exclude(status='ns')
+
+        # then, find the content of those orders by querying their order_books and corresponding books
         order_books = [ Order_book.objects.filter(order=o).all() for o in orders ]
         books = [ [ (o, o.book) for o in ob ] for ob in order_books ]
-        orders_information = reversed(zip(orders, books))
+        orders_information = zip(orders, books)
 
+        # then, their feedback, as well as the books that the feedback corresponds to
         feedbacks = user.feedback_set.all()
         feedbacks_books = [ f.book for f in feedbacks ]
         feedbacks_information = zip(feedbacks, feedbacks_books)
 
+        # finally, we find the feedback that they've rated before
+        # as well, as the books that these feedbacks correspond to
         ratings = Rating.objects.filter(rater=user)
         ratees = [ rating.ratee for rating in ratings ]
         books = [ rating.book for rating in ratings ]
         ratings_feedbacks = [ Feedback.objects.get(rater=ratee,book=book) for ratee, book in zip(ratees, books) ]
         rating_info = zip(ratings, ratees, books, ratings_feedbacks)
+
         return render(req, 'user/show.html', {
             'user': user,
             'truncated_cc_num': truncated_cc_num,
@@ -46,6 +58,12 @@ class UserView(View):
 
     def post(self, req):
         form = RegisterForm(req.POST)
+
+        ##########
+        # MIGHT BE USEFUL FOR REPORT
+        ##########
+        # django helps us to check before the chosen login_id already exists
+        # in the database before registering the user for the first time
         if form.is_valid():
             user = form.save()
             response = HttpResponseRedirect('/')
@@ -64,6 +82,11 @@ class LoginView(View):
         username = req.POST.get('login_id', '')
         password = req.POST.get('password', '')
         try:
+            ##########
+            # MIGHT BE USEFUL FOR REPORT
+            ##########
+
+            # when the user tries to login, we find the user by the login_id and password
             user = Customer.objects.get(login_id=username, password=password)
         except Customer.DoesNotExist:
             user = None
@@ -76,15 +99,32 @@ class LoginView(View):
             return render(req, 'user/login.html', { 'form': LoginForm(), 'error': error })
 
 def add_to_cart(req, isbn):
-    # pdb.set_trace()
     copies_requested = int(req.POST.get("quantity"))
     user = getUser(req)
+
+    if not user:
+        return HttpResponseRedirect('/login/')
+
     book = Book.objects.get(isbn=isbn)
+
+    ##########
+    # MIGHT BE USEFUL FOR REPORT
+    ##########
+
+    # when a user adds a book to her cart, we find the user's order
+    # which is not submitted yet (status='ns'), then create a order_book
+    # that corresponds to that order
+
+    # if the user doesn't have an order whose status is ns, then we create one
     try:
         cart = user.order_set.filter(status='ns')[0]
     except:
         cart = Order(customer=user,status='ns', date_time=datetime.datetime.now())
         cart.save()
+
+    # if an existing order_book exists, it means that the user has already ordered
+    # that book in her cart, so this increments the number of copies in that order_book
+    # if not, it creates a new order_book
     try:
         order_book = cart.order_book_set.get(book=book)
     except:
@@ -92,45 +132,61 @@ def add_to_cart(req, isbn):
         order_book.save()
 
     order_book.copies += copies_requested
+
+    # then we decrement the number of copies available
     book.copies -= copies_requested
     order_book.save()
     book.save()
-    # copies_requested = int(req.POST.get("quantity"))
-    # book.copies -= int(copies_requested)
-    # book.save()
-    # response = HttpResponseRedirect('/orders/')
+
     return HttpResponseRedirect('/orders/')
 
 class OrderView(View):
     def get(self, req):
         user = getUser(req)
-        # if not user:
-        #     HttpResponseRedirect('/login/')
+        if not user:
+            return HttpResponseRedirect('/login/')
 
+        ##########
+        # MIGHT BE USEFUL FOR REPORT
+        ##########
+
+        # to populate the order view
+        # we find the orders corresponding to the user whose status is not submitted
         orders = user.order_set.filter(status='ns')
+
+        # then we find all the books corresponding to that order
         order_books = [ Order_book.objects.filter(order=o).all() for o in orders ]
         order_books = [ item for sublist in order_books for item in sublist ]
         books = [ o.book for o in order_books ]
         orders_information = zip(order_books, books)
+
+        # then we calculate the sub total for each book
         sub_price = [ x[0].copies * x[1].price for x in orders_information ]
         orders_information = zip(order_books, books, sub_price)
+
+        # and the grand total
         grand_total = sum(sub_price)
+
         return render(req, 'order/index.html', { 'user': user, 'orders': orders_information, 'grand_total': grand_total })
+
     def post(self, req):
         user = getUser(req)
+
+        if not user:
+            return HttpResponseRedirect('/login/')
+
+        ##########
+        # MIGHT BE USEFUL FOR REPORT
+        ##########
+
+        # when the user clicks to submit the cart
+        # we change the status of the order from 'ns' (not submitted) to 'dc' (delivered)
+        # and also update the date_time of the order to the current time
         orders = user.order_set.filter(status='ns').update(status='dc', date_time=datetime.datetime.now())
         return HttpResponseRedirect('/users/')
-        """
-        TODO: This is the POST endpoint for the user to submit the orders that are in the cart
-        """
-        pass
 
 class BookView(View):
     def get(self, req, isbn):
-        """
-        Need these variables to inject into the view:
-        @recommendations = book recommendations
-        """
         try:
             book = Book.objects.get(isbn=isbn)
         except:
@@ -138,15 +194,39 @@ class BookView(View):
         return render_book_show(req, book, user=getUser(req))
 
 def render_book_show(req, book, user=None, feedback_form_error=None, quantity_form_error=None):
-    feedbacks = book.feedback_set.all() # not sorted yet
+
+    ##########
+    # MIGHT BE USEFUL FOR REPORT
+    ##########
+
+    # to populate the single book view
+
+    # first we get all the feedback corresponding to the book
+    feedbacks = book.feedback_set.all()
+
+    # then we sort it by usefulness
     feedbacks = sorted(feedbacks, key=lambda feedback: feedback.usefulness(), reverse=True)
+
+    # then, we need to decide when to show the feedback form
+    # the feedback form should only be shown if:
+    # the user is logged in
+    # the user has bought the book before
+    # the user has not given feedback on the book before
+    # see the check_show_feedback_form helper function below for more detail
+
+    # also, for each feedback, we check to see if the user has created it before
+    # if so, then we display the user's rating for that feedback,
+    # if not, then we display form so that the user can rate that feedback
+    # see the check_if_rated_before helper function below for more detail
+
     if not user:
         show_ratings = [ 'self' for feedback in feedbacks ]
         show_feedback_form = False
     else:
         show_ratings = [ check_if_rated_before(user, feedback) for feedback in feedbacks ]
         show_feedback_form = check_show_feedback_form(user, book)
-    
+
+    # next, we want to show book recommendations
     relevant_orders = book.order_book_set.all()
     if len(relevant_orders) <= 0:
         recommendations = None
@@ -162,6 +242,7 @@ def render_book_show(req, book, user=None, feedback_form_error=None, quantity_fo
     feedback_and_ratings = zip(feedbacks, show_ratings)
     b_format = "Hardcover" if book.b_format == 'hc' else "Softcover"
     return render(req, 'book/show.html', {
+        'user': user,
         'book': book,
         'b_format': b_format,
         'feedbacks': feedback_and_ratings,
@@ -171,19 +252,6 @@ def render_book_show(req, book, user=None, feedback_form_error=None, quantity_fo
         'quantity_form_error': quantity_form_error
     })
 
-# USING DJANGO ADMIN INSTEAD
-# class AdminBookView(View):
-#     def post(self, req):
-#         """
-#         TODO: This is the POST endpoint for the store manager to add a new book
-#         """
-#         pass
-#     def patch(self, req):
-#         """
-#         TODO: This is the PATCH endpoint for the store manager to add more quantity of books
-#         """
-#         pass
-
 def search(req):
     """
     GET /books/search?=
@@ -191,22 +259,23 @@ def search(req):
     This will use the same template as GET / which is 'book/index'
 
     @books = books that fulfil the search query
-    
+
     Queries are performed on the following fields:
         publisher: pub
         author: auth
         ISBN: isbn
         subject: subj
     Valid operators:
-        and: __AND__ 
-        or: __OR__ 
-    A query string is of the form 
-        q = a=A 
-        or 
+        and: __AND__
+        or: __OR__
+    A query string is of the form
+        q = a=A
+        or
         q1__OP__q2
 
     Ordering is enforced using braces {}
     """
+    user = getUser(req)
     def basic_query(field, value):
         query = None
         value = ".*[[:<:]]"+value+"[[:>:]].*"
@@ -280,13 +349,14 @@ def search(req):
     or_capture = re.compile(OR)
     search_query = req.GET.get("query")
     books = Book.objects.filter(conjunct_collapse(search_query))
-    return render(req, 'book/index.html', { 'books': books })
-    pass
+    return render(req, 'book/index.html', { 'user': user, 'books': books })
 
 def create_feedback(req, book_id):
     user = getUser(req)
+
     if not user:
-        raise Http403("Forbidden to create feedback")
+        return HttpResponseRedirect('/login/')
+
     book = Book.objects.get(isbn=book_id)
     text = req.POST.get('feedback')
 
@@ -315,16 +385,6 @@ def rating(req, feedback_id):
         return HttpResponseRedirect('/books/' + feedback.book.isbn)
     except Exception as e:
         raise Http404('The rating is invalid')
-
-def statistics(req):
-    """
-    ONLY FOR STORE managers
-    GET /statistics
-    TODO: This is the GET endpoint for seeing the store statistics
-    """
-    # return render(req, 'admin/statistics.html')
-    pass
-
 
 ########################
 # HELPER FUNCTIONS
@@ -368,40 +428,3 @@ def check_if_rated_before(user, feedback):
         return rating
     else:
         return 'no'
-
-# def get_feedback():
-#     pass
-# class DocumentView(Resource):  
-  
-#     def get(self, request, document_id):  
-#         if identity.is_new(document_id):  
-#             form = DocumentForm()  
-#         else:  
-#             document = get_object_or_404(Document, pk=document_id)  
-#             form = DocumentForm(document.get_values())  
-  
-#         model = { 'form': form, 'index_url': reverse('index') }  
-#         return render_to_response('form.html', model)  
-  
-#     def post(self, request, document_id):  
-#         if identity.is_new(document_id):  
-#             document = Document()  
-#         else:  
-#             document = get_object_or_404(Document, pk=document_id)  
-  
-#         document.set_values(request.POST)  
-#         document.save()  
-  
-#         form = DocumentForm(document.get_values())  
-#         if form.is_valid():  
-#             url = reverse('success', args=[document.id])  
-#         else:  
-#             url = reverse('document', args=[document.id])  
-  
-
-# def detail(request, question_id):
-#     try:
-#         question = Question.objects.get(pk=question_id)
-#     except Question.DoesNotExist:
-#         raise Http404("Question does not exist")
-#     return render(request, 'polls/detail.html', {'question': question})

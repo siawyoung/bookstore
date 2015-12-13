@@ -33,7 +33,8 @@ class Book(models.Model):
 		if len(self.feedback_set.all()) == 0:
 			return { 'score__avg': 0 }
 		return self.feedback_set.aggregate(models.Avg('score'))
-		# return Feedback.objects.filter(book=self.book).aggregate(models.Avg('score'))
+	def image(self):
+		return self.url or 'http://placehold.it/700x1000'
 
 class Order(models.Model):
 	# order_id = models.IntegerField(primary_key=True)
@@ -63,6 +64,7 @@ class Feedback(models.Model):
 	rater = models.ForeignKey("Customer")
 	book = models.ForeignKey("Book")
 	score_choices = (
+		(0,0),
 		(1,1),
 		(2,2),
 		(3,3),

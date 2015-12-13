@@ -45,7 +45,7 @@ def insert_order_book(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookstore_app', '0005_merge'),
+    	('bookstore_app', '0004_auto_20151202_2036'),
     ]
 
     operations = [

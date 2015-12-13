@@ -1,10 +1,9 @@
 {% extends 'base/index.html' %}
-{% load num_range %}
 
 {% block content %}
 <h3>All Books</h3>
 {% if user %}
-<p>Hey {{ user.name }}, check out the latest books!</p>
+<p>Hey {{ user.name }}, check out the latest books, or search for a particular one below:</p>
 {% endif %}
 <form class="search-form" action="/search/" method="get">
   <input name="query" type="text">
@@ -25,10 +24,12 @@
   {% for book in books %}
   <a class="single-book" href="/books/{{ book.isbn }}" data-year="{{ book.year_op.year }}" data-rating="{{ book.rating.score__avg }}">
     <div>
-      <img src="http://placehold.it/350x350" alt="">
+      <div class="grid-book-image">
+        <img src="{{ book.image }}" alt="">
+      </div>
       <h4>{{ book.title }}</h4>
+      <h4>{{ book.year_op.year }}</h4>
       <h4 class="price">${{ book.price }}</h4>
-      <p>Released in: {{ book.year_op.year }}</p>
       <p>Average rating: {{ book.rating.score__avg }}</p>
     </div>
   </a>

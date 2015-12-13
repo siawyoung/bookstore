@@ -1,0 +1,79 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+
+{% load pipeline %}
+{% stylesheet 'main' %}
+{% javascript 'jquery' %}
+{% javascript 'main' %}
+
+<div class="statistics view-container">
+  <h3>Statistics ({{ last_30_date }} to {{ today_date }})</h3>
+
+  <h5>{{ orders|length }} orders were placed.</h5>
+
+  <div class="tabs">
+
+
+    <input type="radio" name="tabs" id="tab1" checked >
+    <label for="tab1">Books</label>
+
+    <input type="radio" name="tabs" id="tab2">
+    <label for="tab2">Authors</label>
+
+    <input type="radio" name="tabs" id="tab3">
+    <label for="tab3">Publishers</label>
+
+    <div class="tab-content" id="tab-content1">
+      <h4>Most Popular Books</h4>
+
+      <span>Show only the top: </span>
+      <input type="text" id="most-popular-book-filter">
+
+      {% for book, number in most_popular_books %}
+      <div class="single-order most-popular-book">
+        <div class="image">
+          <img src="{{ book.image }}" alt="">
+        </div>
+        <div class="order-info">
+          <h4><a href="/books/{{ book.isbn }}">{{ book.title }}</a></h4>
+          <h5>${{ book.price }}</h5>
+          <h5>Order quantity: {{ number }}</h5>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="tab-content" id="tab-content2">
+      <h4>Most Popular Authors</h4>
+
+      <span>Show only the top: </span>
+      <input type="text" id="most-popular-author-filter">
+
+      {% for author, number in most_popular_authors %}
+      <div class="single-item most-popular-author">
+        <h4>{{ author }}</h4>
+        <h5>Total number of books sold: {{ number }}</h5>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="tab-content" id="tab-content3">
+      <h4>Most Popular Publishers</h4>
+
+      <span>Show only the top: </span>
+      <input type="text" id="most-popular-publisher-filter">
+
+      {% for publisher, number in most_popular_publishers %}
+      <div class="single-item most-popular-publisher">
+        <h4>{{ publisher }}</h4>
+        <h5>Total number of books sold: {{ number }}</h5>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

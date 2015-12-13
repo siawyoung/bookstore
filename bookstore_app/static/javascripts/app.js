@@ -14,6 +14,44 @@ var attachFeedbackShowHandler = function() {
     if (input) {
       $('div.feedback').hide()
       $('div.feedback:lt(' + input + ')').show()
+    } else {
+      $('div.feedback').show()
+    }
+  })
+}
+
+var attachMostPopularBooksShowHandler = function() {
+  $('#most-popular-book-filter').keyup(function() {
+    var input = parseInt(this.value);
+    if (input) {
+      $('div.most-popular-book').hide()
+      $('div.most-popular-book:lt(' + input + ')').show()
+    } else {
+      $('div.most-popular-book').show()
+    }
+  })
+}
+
+var attachMostPopularAuthorsShowHandler = function() {
+  $('#most-popular-author-filter').keyup(function() {
+    var input = parseInt(this.value);
+    if (input) {
+      $('div.most-popular-author').hide()
+      $('div.most-popular-author:lt(' + input + ')').show()
+    } else {
+      $('div.most-popular-author').show()
+    }
+  })
+}
+
+var attachMostPopularPublishersShowHandler = function() {
+  $('#most-popular-publisher-filter').keyup(function() {
+    var input = parseInt(this.value);
+    if (input) {
+      $('div.most-popular-publisher').hide()
+      $('div.most-popular-publisher:lt(' + input + ')').show()
+    } else {
+      $('div.most-popular-publisher').show()
     }
   })
 }
@@ -53,4 +91,8 @@ $(document).ready(function() {
   attachLogOutHandler()
   attachFeedbackShowHandler()
   attachSortBooksFilter()
+
+  attachMostPopularBooksShowHandler()
+  attachMostPopularAuthorsShowHandler()
+  attachMostPopularPublishersShowHandler()
 })

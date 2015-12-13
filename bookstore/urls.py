@@ -14,7 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
+from adminplus.sites import AdminSitePlus
 from django.contrib import admin
+from bookstore_app import views
+import pdb
+
+admin.site = AdminSitePlus()
+admin.autodiscover()
+
+# def get_admin_urls(urls):
+#     def get_urls():
+#         pdb.set_trace()
+#         my_urls = patterns('', (r'^statistics/$', admin.site.admin_view(views.statistics)))
+#         return my_urls + urls
+#     return get_urls
+
+# admin_urls = get_admin_urls(admin.site.get_urls())
+# admin.site.get_urls = admin_urls
 
 urlpatterns = [
 	url(r'^bookstore/', include('bookstore_app.urls')),

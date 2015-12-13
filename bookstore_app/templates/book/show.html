@@ -3,7 +3,7 @@
 {% block content %}
 <div class="book-show">
   <div class="cover feedback-form">
-    <img src="http://placehold.it/700x1000" alt="">
+    <img src="{{ book.image }}" alt="">
 
     {% if show_feedback_form %}
     <p>It looks like you've purchased this book before. Would you like to leave some feedback?</p>
@@ -11,6 +11,7 @@
       {% csrf_token %}
       <label for="score">Rating</label>
       <select name="score" id="">
+        <option value="0">0 (Terrible)</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -20,7 +21,7 @@
         <option value="7">7</option>
         <option value="8">8</option>
         <option value="9">9</option>
-        <option value="10">10</option>
+        <option value="10">10 (Wonderful)</option>
       </select>
       <textarea name="feedback" id="feedback-textarea"></textarea>
       {% if feedback_form_error %}
@@ -39,7 +40,7 @@
         <p><b>ISBN: </b>{{ book.isbn }}</p>
         <p><b>Authors: </b>{{ book.authors }}</p>
         <p><b>Publisher: </b>{{ book.publisher }}</p>
-        <p><b>Year of Publication: </b>{{ book.year_op }}</p>
+        <p><b>Year of Publication: </b>{{ book.year_op.year }}</p>
         <p><b>Subject: </b>{{ book.subject }}</p>
         <p><b>Keywords: </b>{{ book.keywords }}</p>
       </div>
@@ -97,7 +98,25 @@
     {% endif %}
 
     <h4>Book Recommendations</h4>
-    <p>Check these titles out yo.</p>
+    {% if recommendations %}
+      <div class="recommendations">
+        {% for book in recommendations %}
+          <a class="single-book" href="/books/{{ book.isbn }}" data-year="{{ book.year_op.year }}" data-rating="{{ book.rating.score__avg }}">
+            <div>
+              <div class="grid-book-image">
+                <img src="{{ book.image }}" alt="">
+              </div>
+              <h5>{{ book.title }}</h5>
+              <h5>{{ book.year_op.year }}</h5>
+              <h5 class="price">${{ book.price }}</h5>
+              <p>Average rating: {{ book.rating.score__avg }}</p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>There are no recommendations that we can offer.</p>
+    {% endif %}
 
   </div>
 </div>
