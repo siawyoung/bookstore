@@ -13,12 +13,35 @@ SELECT `bookstore_app_book`.`isbn`,
        `bookstore_app_book`.`b_format`,
        `bookstore_app_book`.`keywords`,
        `bookstore_app_book`.`subject`
-FROM `bookstore_app_book` LIMIT 21
+FROM `bookstore_app_book`
 
+Search for conjunctive query of form ( field=x1 OR ...) AND ...
+SELECT `bookstore_app_book`.`isbn`,
+       `bookstore_app_book`.`title`,
+       `bookstore_app_book`.`authors`,
+       `bookstore_app_book`.`publisher`,
+       `bookstore_app_book`.`year_op`,
+       `bookstore_app_book`.`copies`,
+       `bookstore_app_book`.`price`,
+       `bookstore_app_book`.`url`,
+       `bookstore_app_book`.`b_format`,
+       `bookstore_app_book`.`keywords`,
+       `bookstore_app_book`.`subject`
+FROM `bookstore_app_book`
+WHERE (field1 = x1
+	OR
+	... fieldk = xk)
+	...
+	AND
+	...
+	(fieldj = xj
+	OR
+	... fieldN = xN)
+	
 Book page
 ---------
 
-Get book with isbn number ISBN
+Get book with isbn number
 SELECT `bookstore_app_book`.`isbn`,
        `bookstore_app_book`.`title`,
        `bookstore_app_book`.`authors`,
@@ -43,10 +66,9 @@ SELECT `bookstore_app_book`.`isbn`,
        `bookstore_app_book`.`keywords`,
        `bookstore_app_book`.`subject`
 FROM `bookstore_app_book`
-WHERE `bookstore_app_book`.`isbn` = ISBN
+WHERE `bookstore_app_book`.`isbn` = isbn
 
-Get all feedback
--------
+Get all feedback for a book
 SELECT `bookstore_app_feedback`.`id`,
        `bookstore_app_feedback`.`rater_id`,
        `bookstore_app_feedback`.`book_id`,
@@ -54,15 +76,123 @@ SELECT `bookstore_app_feedback`.`id`,
        `bookstore_app_feedback`.`date_time`,
        `bookstore_app_feedback`.`short_text`
 FROM `bookstore_app_feedback`
-WHERE `bookstore_app_feedback`.`book_id` = '978-0060555665'
+WHERE `bookstore_app_feedback`.`book_id` = book_isbn
 
-Get feedback usefulness for book with isbn ISBN and feedback giver login_id
-------
+Get feedback usefulness for book
 SELECT AVG(`bookstore_app_rating`.`score`) AS `score__avg`
 FROM `bookstore_app_rating`
-WHERE (`bookstore_app_rating`.`ratee_id` = login_id
-       AND `bookstore_app_rating`.`book_id` = ISBN)
+WHERE (`bookstore_app_rating`.`ratee_id` = feedback_giver_id
+       AND `bookstore_app_rating`.`book_id` = isbn)
 
-Check user's rating of book
+Check user's rating of feedback helpfulness
+SELECT `bookstore_app_rating`.`id`,
+       `bookstore_app_rating`.`score`,
+       `bookstore_app_rating`.`rater_id`,
+       `bookstore_app_rating`.`ratee_id`,
+       `bookstore_app_rating`.`book_id`
+FROM `bookstore_app_rating`
+WHERE (`bookstore_app_rating`.`ratee_id` = feedback_giver_id
+       AND `bookstore_app_rating`.`book_id` = feedback_book
+       AND `bookstore_app_rating`.`rater_id` = user)
+
+Find if user has ordered the book
+1. Find all orders placed by the user
+SELECT `bookstore_app_order`.`id`,
+       `bookstore_app_order`.`date_time`,
+       `bookstore_app_order`.`customer_id`,
+       `bookstore_app_order`.`status`
+FROM `bookstore_app_order`
+WHERE (`bookstore_app_order`.`customer_id` = user_id
+       AND NOT (`bookstore_app_order`.`status` = 'ns'))
+
+2. Find all Order_book tuples that match the current book and an Order O found in 1.
+SELECT `bookstore_app_order_book`.`id`,
+       `bookstore_app_order_book`.`order_id`,
+       `bookstore_app_order_book`.`book_id`,
+       `bookstore_app_order_book`.`copies`
+FROM `bookstore_app_order_book`
+WHERE (`bookstore_app_order_book`.`order_id` = O_id
+	AND `bookstore_app_order_book`.`book_id` = isbn)
+
+views.render_book_show()
+Find recommendations
+1. Find all Order_book tuples associated with the book
+SELECT `bookstore_app_order_book`.`id`,
+       `bookstore_app_order_book`.`order_id`,
+       `bookstore_app_order_book`.`book_id`,
+       `bookstore_app_order_book`.`copies`
+FROM `bookstore_app_order_book`
+WHERE `bookstore_app_order_book`.`book_id` = isbn
+
+2. Query for all Order_book tuples matching an order_id found in step 1. that do not match the current book
+SELECT DISTINCT `bookstore_app_order_book`.`book_id`,
+FROM `bookstore_app_order_book`
+WHERE (`bookstore_app_order_book`.`order_id` = order_id_1
+	.
+	.
+	.
+	OR `bookstore_app_order_book`.`order_id` = order_id_N)
+	AND NOT `bookstore_app_order_book`.`book_id` = isbn
+
+views.create_feedback()
+Create new feedback
+INSERT INTO `bookstore_app_feedback` (`rater_id`, `book_id`, `score`, `date_time`, `short_text`)
+VALUES (login_id,
+        isbn,
+        score,
+        current_date_time,
+        short_text)
+
+views.rating()
+Create new rating
+INSERT INTO `bookstore_app_rating` (`score`, `rater_id`, `ratee_id`, `book_id`)
+VALUES (score,
+        rater_id,
+        ratee_id,
+        isbn)
+
+Ordering
+-------
+
+Find user cart
+1. Find all user orders
+SELECT `bookstore_app_order`.`id`,
+       `bookstore_app_order`.`date_time`,
+       `bookstore_app_order`.`customer_id`,
+       `bookstore_app_order`.`status`
+FROM `bookstore_app_order`
+WHERE (`bookstore_app_order`.`customer_id` = user_id
+       AND `bookstore_app_order`.`status` = 'ns')
+
+2. Find all Order_book tuples corresponding to an order o found in step 1.
+SELECT `bookstore_app_order_book`.`book_id`
+FROM `bookstore_app_order_book`
+WHERE `bookstore_app_order_book`.`order_id` = o_id
+
+Submit cart
+UPDATE `bookstore_app_order`
+SET `status` = 'dc',
+    `date_time` = current_datetime
+WHERE (`bookstore_app_order`.`customer_id` = user_id
+       AND `bookstore_app_order`.`status` = 'ns')
+
+Admin
 ------
 
+Get all orders in the last 30 days
+SELECT `bookstore_app_order`.`id`,
+       `bookstore_app_order`.`date_time`,
+       `bookstore_app_order`.`customer_id`,
+       `bookstore_app_order`.`status`
+FROM `bookstore_app_order`
+WHERE (NOT (`bookstore_app_order`.`status` = 'ns')
+       AND `bookstore_app_order`.`date_time` > current_datetime - 30 days
+       AND `bookstore_app_order`.`date_time` <= current_datetime)
+
+Get all Order_book tuples corresponding to these orders o
+SELECT `bookstore_app_order_book`.`quantity`,
+       `bookstore_app_order_book`.`book_id`
+FROM `bookstore_app_order_book`
+WHERE `bookstore_app_order_book`.`order_id` = o_id
+
+Aggregate all of these books by isbn, publisher, author by iterating through the Django QuerySet object

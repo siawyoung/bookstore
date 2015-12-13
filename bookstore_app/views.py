@@ -195,10 +195,6 @@ class BookView(View):
 
 def render_book_show(req, book, user=None, feedback_form_error=None, quantity_form_error=None):
 
-    ##########
-    # MIGHT BE USEFUL FOR REPORT
-    ##########
-
     # to populate the single book view
 
     # first we get all the feedback corresponding to the book
